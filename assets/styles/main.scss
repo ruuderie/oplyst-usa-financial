@@ -1,0 +1,46 @@
+// Define color variables
+// Define color variables
+$dark-blue: rgb(34, 40, 49);
+$mid-blue: rgb(57, 62, 70);
+$turquoise: rgb(0, 173, 181);
+$light-gray: rgb(238, 238, 238);
+
+// Apply colors to different elements
+
+
+body {
+  background-color: $light-gray;
+  color: $mid-blue;
+}
+.navbar {
+  background-color: $light-gray;
+  color: $mid-blue;
+}
+
+h1, h2, h3 {
+  color: $dark-blue;
+}
+
+a {
+  color: $turquoise;
+  &:hover {
+    color: $mid-blue;
+  }
+}
+
+button {
+  background-color: $turquoise;
+  color: $turquoise;
+  &:hover {
+    background-color: $turquoise;
+    color: $turquoise;
+  }
+}
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: $light-gray;
+
+}
+
