@@ -1,120 +1,143 @@
 <script setup>
+import { ref } from "vue";
 
+const industries = ref([
+  { id: 1, name: 'Real estate', description: 'Partnering with property professionals for value-creating solutions.' },
+  { id: 2, name: 'Healthcare', description: 'Energizing the pulse of healthcare with financial vitality.' },
+  { id: 3, name: 'Manufacturing', description: 'Powering production lines with efficient financial engines.' },
+  { id: 4, name: 'Retail', description: 'Revitalizing retail with creative, customer-focused finance.' },
+  { id: 5, name: 'Financial services', description: 'Fostering growth in finance with innovative lending strategies.' },
+  { id: 6, name: 'Technology', description: 'Fueling the future of tech with targeted financial tools.' },
+]);
+
+const services = ref([
+  { id: 1, name: 'Real estate loans', description: 'Tailored financing solutions for your property ambitions.' },
+  { id: 2, name: 'Equipment loans', description: 'Invest in your business growth with strategic equipment financing.' },
+  { id: 3, name: 'Lines of credit', description: 'Flexible access to funds whenever your business needs it.' },
+  { id: 4, name: 'Accounts Receivable finance', description: 'Boost your cash flow by leveraging your receivables.' },
+  { id: 5, name: 'Startups', description: 'Kickstart your dream venture with our bespoke financing options.' },
+  { id: 6, name: 'Merchant Cash Advance', description: 'Meet your short-term needs with our quick and easy cash advances.' },
+]);
 </script>
 
 <template>
-	<div>
-		<Head>
-            <Title>Ruud Erie 💻💪💯 | ⟠ 🦀  </Title>
-            <Link 
-            rel="preconnect" 
-            href="https://fonts.googleapis.com"/>
-            <Link 
-            rel="preconnect" 
-            href="https://fonts.gstatic.com" 
-            crossorigin/>
-            <Link 
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" 
-            rel="stylesheet"> </Link>        
-        </Head>
-    <NuxtLayout>
-        <section class="container is-small">
-				<nuxt-img class="img" 
-                    src="../public/salym.eth_bald_black_man_as_a_young_aristocrat_egypt_architectu_4eb25135-26f3-488d-bad0-07ebdfd6f5c4.png"
-                    alt="Domain of Prosperity" 
-                    />
-        
-
-        </section > 
-        <section id="hero" class="hero is-large">
-            <div class="hero-body">
-                <h1 class="title">
-                    Ruud Erie
-                </h1>
-                <h3 class="subtitle">
-                    consultant | software engineer | speaker
-                </h3>
-                <p>
-                    <ul>
-                        <li>
-                            <NuxtLink class="tag" to="https://linkedin.com/in/ruudsalymerie">
-                                @ruudsalymerie
-                            </NuxtLink>
-                        </li>
-                    </ul>
-                </p>
+<div>
+  <Head>
+    <Title>Oplyst International | Innovation, Integrity, Impact</Title>
+    <Link 
+      rel="preconnect" 
+      href="https://fonts.googleapis.com"/>
+    <Link 
+      rel="preconnect" 
+      href="https://fonts.gstatic.com" 
+      crossorigin/>
+    <Link 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" 
+      rel="stylesheet"> </Link>        
+  </Head>
+  <NuxtLayout>
+    <section class="container is-small">
+      <!--<nuxt-img class="img" 
+        src=""
+        alt="Oplyst International - Pioneering Commercial Lending Solutions" 
+      /> -->
+    </section > 
+    <section id="hero" class="hero is-large">
+      <div class="hero-body">
+        <h1 class="title">
+          Oplyst International, LLC
+        </h1>
+        <h3 class="subtitle">
+          Commercial Lending Solutions for Forward-Thinking Enterprises
+        </h3>
+        <p>
+          <ul>
+            <li>
+              <NuxtLink class="tag" to="https://linkedin.com/in/oplyst-international">
+                @oplyst-international
+              </NuxtLink>
+            </li>
+          </ul>
+        </p>
+      </div>
+    </section>
+    <section class="container is-small py-3">
+      <div class="level">                    
+        <div class="level-item has-text-centered">
+          <div class="box">
+            <input class="input is-small py-4 mx-3 my-3" type="name" placeholder="First Name">
+            <input class="input is-small py-4 mx-3" type="email" placeholder="email@yourcompany.com">
+            <button class="button is-medium mx-3 my-3 is-responsive">
+              Stay Informed
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container is-medium py-6">
+      <center>
+        <p class="title py-2">
+          Redefining Industry Boundaries with Integrated Commercial Lending Solutions.
+        </p>
+        <p class="subtitle py-2">
+          We deliver innovative technology solutions, efficient logistics services, and strategic financial products to empower enterprises.
+        </p>
+      </center>     
+    </section>
+    <section class="container is-medium py-6 has-text-centered">
+      <h2>Our Services</h2>
+      <div class="row">
+        <div class="col-lg-4" v-for="service in services" :key="service.id">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ service.name }}</h5>
+              <p class="card-text">{{ service.description }}</p>
             </div>
-        </section>
-        <section class="container is-small py-3">
-            <div class="level">                    
-                <div class="level-item has-text-centered">
-                    <div class="box">
-                        <input class="input is-small py-4 mx-3 my-3" type="name" placeholder="First Name">
-                        <input class="input is-small py-4 mx-3" type="email" placeholder="email@amazing.com">
-                        <button class="button is-medium mx-3 my-3 is-responsive">
-                            Stay In The Know
-                        </button>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container is-medium py-6 has-text-centered">
+      <h2>Industries We Serve</h2>
+      <div class="row">
+        <div class="col-lg-4" v-for="industry in industries" :key="industry.id">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ industry.name }}</h5>
+              <p class="card-text">{{ industry.description }}</p>
             </div>
-        </section>
-        <section class="container is-medium py-6">
-
-            <center>
-                <p class="title py-2">
-                    Bridging the gap between technology and successful outcomes.
-                </p>
-                <p class="subtitle py-2">
-                    I love building software that solves real problems.
-                </p>
-            </center>
-                  
-
-        </section>
-        <section class="container is-medium py-6 has-text-centered">
-					<div>
-                        <Icon name="logos:ethereum" class="is-large mx-1"/>
-                        <Icon name="vscode-icons:file-type-apex" class="is-large"/>
-                        <Icon name="vscode-icons:file-type-light-rust" class="is-large mx-1"/>
-                        <Icon name="vscode-icons:file-type-python" class="is-large mx-1"/>
-                        <Icon name="vscode-icons:file-type-typescript-official" class="is-large mx-1"/>
-                        <Icon name="logos:deno" class="is-large mx-1"/>
-                        <Icon name="fa6-brands:node" class="is-large mx-1"/>
-                        <Icon name="vscode-icons:file-type-vue" class="is-large mx-1"/>
-                        <Icon name="logos:nuxt-icon" class="is-large mx-1"/>
-                        <Icon name="logos:postgresql" class="is-large mx-1"/>
-                        <Icon name="logos:aws" class="is-large mx-1"/>
-									</div>
-        </section>
-            <span class="mb-2 pb-2"/>
-        <section class="section is-medium is-mobile has-text-centered">
-            <h1 class="title">Core Principles</h1>
-                <ul>
-                    <li class="subtitle">Users come first.</li>
-                    <li class="subtitle">Quality and reliability are crucial.</li>
-                    <li class="subtitle">Always be learning and improving.</li>
-                    <li class="subtitle">Collaboration is key.</li>
-                    <li class="subtitle">Protect privacy, security, and human rights.</li>
-                </ul>
-        </section>
-        <section class="section is-medium is-mobile">
-            <div class="content is-large">
-                <center> <h3>Ruud Erie </h3> </center>
-                <p>Ruud Erie is a highly respected software architect and engineer who specializes in developing high performance applications that meet rapidly changing consumer demands and business needs. With his deep expertise in software architecture and agile-friendly digital transformation, he is a sought-after consultant who regularly delivers results to clients across the globe.</p>
-                <p>Ruud has extensive experience working with top-tier companies on a wide range of projects, including enterprise applications and cloud-based solutions. He is particularly skilled in using enterprise platforms such as Salesforce, AWS, Google Cloud, and Microsoft Azure to deliver optimal results.</p>
-                <p>With a proven track record of success, Ruud has held a range of key roles throughout his career, including software engineer, software architect, solution architect, technical manager, project manager, and consultant.</p>
-                <p>Whether you need hands-on support or strategic leadership in your software projects, Ruud is an ideal partner. He is available to work with your team in a variety of capacities, from keynotes and consulting to training and more. To learn more about how Ruud can help your organization succeed, schedule a chat with him today.</p>  
-            </div>
-            <div class="has-text-centered py-3">
-                <button class="button is-large is-responsive">
-                        Schedule a free discovery call
-                </button>
-            </div>
-        </section>
-				</NuxtLayout>
-			</div>
+          </div>
+        </div>
+      </div>
+    </section>    
+    <span class="mb-2 pb-2"/>
+    <section class="section is-medium is-mobile has-text-centered">
+      <h1 class="title">Our Values</h1>
+      <ul>
+        <li class="subtitle">Innovation</li>
+        <li class="subtitle">Simplicity</li>
+        <li class="subtitle">Excellence</li>
+        <li class="subtitle">Privacy</li>
+        <li class="subtitle">Client Service</li>
+        <li class="subtitle">Integrity</li>
+        <li class="subtitle">Teamwork</li>
+      </ul>
+    </section>
+    <section class="section is-medium is-mobile">
+      <div class="content is-large">
+        <center> <h3>Oplyst International </h3> </center>
+        <p>At Oplyst International, we are innovators, disruptors, and pioneers. Our unique combination of technology, logistics, and financial advisory allows us to provide holistic solutions to complex challenges. We do business with integrity, fostering long-term partnerships based on mutual trust and respect.</p>
+        <p>With a firm commitment to simplicity, quality, and service, we prioritize client satisfaction and champion a future where businesses thrive. Oplyst International is more than just a company - we are shaping the future. Schedule a chat with us today to learn more about our vision, mission, and the services we offer.</p>  
+      </div>
+      <div class="has-text-centered py-3">
+        <button class="button is-large is-responsive">
+            Schedule a Discovery Call
+        </button>
+      </div>
+    </section>
+  </NuxtLayout>
+</div>
 </template>
 
 <style lang="scss">
-
 </style>

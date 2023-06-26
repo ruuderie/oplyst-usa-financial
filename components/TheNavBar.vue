@@ -1,60 +1,130 @@
+
 <script setup>
-import { ref, onMounted } from "vue";
-let isActive = ref(false);
-let showNav = ref(true);
-let lastScrollPosition = ref(0);
-
-function toggleMenu (){
-  isActive.value = !isActive.value;
-  console.log('toggleMenu -[ isActive: ' + isActive.value + '] [showNav: ' + showNav.value + ']');
-
+import { ref, computed } from 'vue';
+const options = [
+  {
+    label: 'Home',
+    name: 'Home',
+    children: [
+      { label: 'Overview', name: 'Overview' },
+      { label: 'Values', name: 'Values' },
+      { label: 'Mission', name: 'Mission' }
+    ]
+  },
+  {
+    label: 'Services',
+    name: 'Services',
+    children: [
+      { label: 'Real Estate Loans', name: 'Real Estate Loans' },
+      { label: 'Equipment Loans', name: 'Equipment Loans' },
+      { label: 'Lines of Credit', name: 'Lines of Credit' },
+      { label: 'Accounts Receivable Finance', name: 'Accounts Receivable Finance' },
+      { label: 'Startups', name: 'Startups' },
+      { label: 'Merchant Cash Advance', name: 'Merchant Cash Advance' }
+    ]
+  },
+  {
+    label: 'Industries',
+    name: 'Industries',
+    children: [
+      { label: 'Real Estate', name: 'Real Estate' },
+      { label: 'Healthcare', name: 'Healthcare' },
+      { label: 'Manufacturing', name: 'Manufacturing' },
+      { label: 'Retail', name: 'Retail' },
+      { label: 'Financial Services', name: 'Financial Services' },
+      { label: 'Technology', name: 'Technology' }
+    ]
+  },
+  {
+    label: 'Resources',
+    name: 'Resources',
+    children: [
+      { label: 'Blog', name: 'Blog' },
+      { label: 'Industry News', name: 'Industry News' },
+      { label: 'eBooks/Whitepapers', name: 'eBooks/Whitepapers' },
+      { label: 'Case Studies', name: 'Case Studies' }
+    ]
+  }
+]
+const transformToSEOName = (name) => {
+  return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
 }
-function toggleNav (){
-  showNav.value = !showNav.value;
-  console.log('toggleMenu -[ isActive: ' + isActive.value + '] [showNav: ' + showNav.value + ']');
 
+options.forEach(option => {
+  option.name = transformToSEOName(option.name);
+  option.children.forEach(child => {
+    child.name = transformToSEOName(child.name);
+  });
+});
+
+const activeSubmenu = ref('')
+const isActive = ref(false)
+
+const toggleSubmenu = (menuName) => {
+  console.log('menuName', menuName);
+  console.log('activeSubmenu.value', activeSubmenu.value);
+  activeSubmenu.value = activeSubmenu.value === menuName ? '' : menuName
 }
 
+const toggleMenu = () => {
+  console.log('toggleMenu');
+  isActive.value = !isActive.value
+  console.log('isActive.value : ', isActive.value);
+}
 </script>
 
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <NuxtLink class="navbar-item" to="/"> <h2 class="is-large">Ruud Erie </h2></NuxtLink>
-    </div>
-    <NuxtLink role="button" 
-    :class="{ 'is-active': isActive }" 
-    class="navbar-burger" 
-    aria-label="menu" aria-expanded="false" 
-    data-target="navbarStandard"
-    @click="toggleMenu">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </NuxtLink>
-    <div id="navbarStandard" class="navbar-menu" :class="{'is-active': isActive}" v-show="{ isActive }">
-      <div class="navbar-start"></div>
-    <div :class="{ 'is-hidden': !showNav }">
-      <div class="navbar-end">
-        <NuxtLink to="/" class="navbar-item"> Home </NuxtLink>
-        <NuxtLink to="/insights" class="navbar-item"> Insights </NuxtLink>
-        <NuxtLink to="/about" class="navbar-item"> About </NuxtLink>
-        <span class="navbar-item">
-              <NuxtLink to="https://github.com/ruuderie" class="button is-info is-inverted">
-                <Icon name="uil:github" />
-                <span>Github</span>
-              </NuxtLink>
-        </span>
-
-        </div>
-    </div>
-
+  <div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <NuxtLink class="navbar-item" to="/">
+        </NuxtLink>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" @click="toggleMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
 
-  </nav>
+      <div id="navbarStandard" class="navbar-menu" :class="{'is-active': isActive}">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable" v-for="menu in options" :key="menu.label">
+            <NuxtLink class="navbar-link" to={{menu.name}}> {{ menu.label }} </NuxtLink>
+            <div class="navbar-dropdown">
+              <NuxtLink v-for="child in menu.children" :key="child.label" :to="'/'+menu.name.toLowerCase()+'/'+child.name.toLowerCase()" class="navbar-item">{{ child.label }}</NuxtLink>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
 </template>
 
-<style>
+
+
+<style scoped>
+.navbar {
+  background-color: #c2dbff; /* Goldman Sachs Dark Blue */
+}
+
+.navbar-item h2 {
+  color: #FFFFFF; /* White color for the text */
+}
+
+.navbar-burger {
+  color: #FFFFFF; /* White color for the burger menu */
+}
+
+.navbar-item.has-dropdown:hover .navbar-link {
+  color: #D4A017; /* Goldman Sachs Gold for hover state */
+}
+
+
+.navbar-item.has-dropdown:hover .navbar-dropdown,
+.navbar-item.has-dropdown.is-active .navbar-dropdown {
+  display: block;
+}
+
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
@@ -65,3 +135,5 @@ function toggleNav (){
   opacity: 0;
 }
 </style>
+
+

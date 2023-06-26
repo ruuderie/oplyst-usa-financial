@@ -49,7 +49,7 @@ function SetSearchTerm(val) {
               <div class="my-3 has-text-centered">
 
                 <p class="title ">
-                  Insights by Ruud
+                  Our Services
                 </p>
                 <p class="subtitle">
                   Gain Valuable Perspectives and Actionable Advice
