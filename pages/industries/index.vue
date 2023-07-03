@@ -1,89 +1,75 @@
 <script setup>
 import { ref, computed } from 'vue';
+import LandingPage from '@/components/LandingPage.vue';
 
-const blogs = ref([
-      {
-        id: 1,
-        title: 'My First Blog',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod euismod libero, eget suscipit mauris iaculis in.',
-        tags: ['tag1', 'tag2', 'tag3']
-      },
-      {
-        id: 2,
-        title: 'My Second Blog',
-        content: 'Sed at odio id arcu congue lobortis quis non tellus. Donec quis sapien ac arcu aliquet dictum ac eget dolor.',
-        tags: ['tag2', 'tag3']
-      },
-      {
-        id: 3,
-        title: 'My Third Blog',
-        content: 'Aliquam sit amet sapien tincidunt, vestibulum justo eget, lacinia nulla. Sed ac dapibus nisl, nec laoreet augue.',
-        tags: ['tag1']
-      }
-    ]);
-const searchTerm = ref('');
-const filteredBlogs = computed(() => {
-      if (searchTerm.value === '') {
-        return blogs.value;
-      } else {
-        return blogs.value.filter(blog => {
-          return blog.tags.some(tag => {
-            return tag.toLowerCase().includes(searchTerm.value.toLowerCase());
-          });
-        });
-      }
+const content = ref({
+	pageTitle: 'Financial Solutions for the Construction Industry: Paving the Path to Success',
+	subTitle: 'Providing Tailored Financial Solutions for the Construction Industry',
+	heroImage:
+		'[Image showcasing a bustling construction site with cranes and buildings in progress, superimposed with financial graphs, indicating the synergy between construction operations and financial growth]',
+	industryName: 'Construction',
+	industryDescription:
+		'Oplyst International, LLC offers uniquely tailored financial solutions designed to fuel the dynamic and intricate world of construction. We understand the unique complexities and opportunities within the construction sector, delivering specialized financial services that fuel your growth and success.',
+	why: {
+		items: [
+			{
+				description:
+					'Profound understanding of the operational and financial demands unique to the construction sector.',
+			},
+			{
+				description: 'Tailored financial services to meet diverse construction needs.',
+			},
+			{
+				description:
+					'A team of financial professionals offering personalized guidance for your financial decisions.',
+			},
+			{
+				description: 'A partnership anchored in integrity, agility, and commitment to your success',
+			},
+		],
+	},
+	services: {
+		items: [
+			{
+				title: 'Equipment Loans',
+				description:
+					'Customized financing options to help you purchase or upgrade essential construction machinery.',
+			},
+			{
+				title: 'Working Capital Loans',
+				description:
+					'Reliable financial support for your daily operations, ensuring seamless project execution.',
+			},
+			{
+				title: 'Project Loans',
+				description: 'Capital support for launching new construction projects or expanding existing ones.',
+			},
+		],
+	},
+	caseStudies: {
+		sectionTitle: 'Case Studies',
+		subTitle:
+			'Explore how we’ve empowered growth in the construction industry with our expert financial solutions.',
+		items: [],
+	},
+	callToAction:
+		'Ready to elevate your construction operations with our specialized financial solutions? Contact us today!',
+	faq: 'Have questions about our financial services for the construction industry? Visit our FAQ section below or reach out to us for more information.',
 });
-
-function SetSearchTerm(val) {
-  searchTerm.value = val;
-}
-
 </script>
 
 <template>
-
-<div class="is-responsive is-mobile">
-    <NuxtLayout>
-      <section class="hero is-small is-primary is-fluid">
-            <div class="hero-body is-fluid">
-              <div class="my-3 has-text-centered">
-
-                <p class="title ">
-                  Industries We Serve
-                </p>
-                <p class="subtitle">
-                  Gain Valuable Perspectives and Actionable Advice
-                </p>
-              </div>
-            </div>
-      </section>
-      <section class="container is-fluid">
-
-        <div class="search-container my-5 py-3 is-fluid">
-          <label for="title">Search by Tag:</label>
-          <input class="input is-rounded" type="text" id="tag-search" v-model="searchTerm" />
-        </div>
-
-        <div class="columns tile is-ancestor my-6 py-4 is-fluid">
-          <div class="column is-fluid my-4" v-for="blog in filteredBlogs" :key="blog.id">
-            <NuxtLink :to="`/insights/${blog.id}`">
-              <h2 class="title">{{ blog.title }}</h2>
-            </NuxtLink>
-            <p class="subtitle">{{ blog.content }}</p>
-            <div class="tags">
-                <span class="tag my-3 px-4" v-for="tag in blog.tags" :key="tag">
-                  <NuxtLink :to="`/insights`" @click="SetSearchTerm(tag)">
-                  {{ tag }}
-                </NuxtLink>
-                </span>
-
-            </div>
-          </div>
-        </div>
-      </section>
-      <NuxtPage/>
-
-  </NuxtLayout>
-
-</div>
+	<div>
+		<LandingPage
+			:page-title="content.pageTitle"
+			:sub-title="content.subTitle"
+			:industry-name="content.industryName"
+			:industry-description="content.industryDescription"
+			:why-items="content.why.items"
+			:services-items="content.services.items"
+			:case-studies="content.caseStudies"
+			:faq="content.faq"
+			:call-to-action="content.callToAction"
+		/>
+	</div>
 </template>
