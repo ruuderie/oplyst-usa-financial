@@ -3,58 +3,56 @@ import { ref, computed } from 'vue';
 import LandingPage from '@/components/LandingPage.vue';
 
 const content = ref({
-	pageTitle: 'Financial Solutions for the Construction Industry: Paving the Path to Success',
-	subTitle: 'Providing Tailored Financial Solutions for the Construction Industry',
-	heroImage:
-		'[Image showcasing a bustling construction site with cranes and buildings in progress, superimposed with financial graphs, indicating the synergy between construction operations and financial growth]',
-	industryName: 'Construction',
+	industryName: 'Tailored Commercial Lending for Multiple Industries',
 	industryDescription:
-		'Oplyst International, LLC offers uniquely tailored financial solutions designed to fuel the dynamic and intricate world of construction. We understand the unique complexities and opportunities within the construction sector, delivering specialized financial services that fuel your growth and success.',
+		'At Oplyst International, LLC, we offer a wide range of tailored financial solutions that are specifically designed to meet the unique needs of various sectors. Our vast experience in the commercial lending brokerage industry allows us to deliver specialized financial services that help businesses in the Real Estate, Construction, Healthcare, Manufacturing, Retail, Financial Services, and Technology sectors.',
+	pageTitle: 'Financial Solutions for Multiple Industries: Navigating the Path to Success',
+	subTitle: 'Providing Tailored Financial Solutions for Various Industry Sectors',
+	heroImage:
+		'[Image showcasing different industry sectors, with commercial lending icons overlaid, indicating the synergy between our lending solutions and the success of these sectors]',
 	why: {
 		items: [
 			{
-				description:
-					'Profound understanding of the operational and financial demands unique to the construction sector.',
+				description: 'In-depth understanding of the operational and financial demands unique to each sector.',
 			},
 			{
-				description: 'Tailored financial services to meet diverse construction needs.',
+				description: 'Tailored financial services to meet the diverse needs of different industries.',
 			},
 			{
 				description:
 					'A team of financial professionals offering personalized guidance for your financial decisions.',
 			},
 			{
-				description: 'A partnership anchored in integrity, agility, and commitment to your success',
+				description: 'A partnership anchored in integrity, agility, and commitment to your success.',
 			},
 		],
 	},
 	services: {
 		items: [
 			{
+				title: 'Real Estate Loans',
+				description:
+					'Customized financing options to assist in real estate purchases, expansions, and renovations.',
+			},
+			{
 				title: 'Equipment Loans',
 				description:
-					'Customized financing options to help you purchase or upgrade essential construction machinery.',
+					'Flexible financing for the purchase or upgrade of essential machinery and technology across all sectors.',
 			},
 			{
 				title: 'Working Capital Loans',
-				description:
-					'Reliable financial support for your daily operations, ensuring seamless project execution.',
-			},
-			{
-				title: 'Project Loans',
-				description: 'Capital support for launching new construction projects or expanding existing ones.',
+				description: 'Reliable financial support for daily operations, ensuring seamless business execution.',
 			},
 		],
 	},
 	caseStudies: {
 		sectionTitle: 'Case Studies',
-		subTitle:
-			'Explore how we’ve empowered growth in the construction industry with our expert financial solutions.',
+		subTitle: "Discover how we've empowered growth across various industries with our expert financial solutions.",
 		items: [],
 	},
 	callToAction:
-		'Ready to elevate your construction operations with our specialized financial solutions? Contact us today!',
-	faq: 'Have questions about our financial services for the construction industry? Visit our FAQ section below or reach out to us for more information.',
+		'Ready to take your business to the next level with our specialized financial solutions? Contact us today!',
+	faq: 'Have questions about our financial services for your specific industry? Visit our FAQ section below or reach out to us for more information.',
 });
 </script>
 

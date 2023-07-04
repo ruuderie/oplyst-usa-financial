@@ -14,11 +14,12 @@ const options = [
 		label: 'Services',
 		name: 'Services',
 		children: [
-			{ label: 'Real Estate Loans', name: 'Real Estate Loans' },
+			{ label: 'Commercial Mortgages', name: 'Commercial Mortgages' },
 			{ label: 'Equipment Loans', name: 'Equipment Loans' },
 			{ label: 'Lines of Credit', name: 'Lines of Credit' },
-			{ label: 'Accounts Receivable Finance', name: 'Accounts Receivable Finance' },
+			{ label: 'Invoice Financing', name: 'Invoice Financing' },
 			{ label: 'Startups', name: 'Startups' },
+			{ label: 'SBA Loans', name: 'SBA Loans' },
 			{ label: 'Merchant Cash Advance', name: 'Merchant Cash Advance' },
 		],
 	},
@@ -31,7 +32,7 @@ const options = [
 			{ label: 'Healthcare', name: 'Healthcare' },
 			{ label: 'Manufacturing', name: 'Manufacturing' },
 			{ label: 'Retail', name: 'Retail' },
-			{ label: 'Financial Services', name: 'Financial Services' },
+			{ label: 'Logistics & Trucking', name: 'Logistics' },
 			{ label: 'Technology', name: 'Technology' },
 		],
 	},
@@ -91,7 +92,7 @@ const toggleMenu = () => {
 			<div id="navbarStandard" class="navbar-menu" :class="{ 'is-active': isActive }">
 				<div class="navbar-start">
 					<div v-for="menu in options" :key="menu.label" class="navbar-item has-dropdown is-hoverable">
-						<NuxtLink class="navbar-link" to="{{menu.name}}"> {{ menu.label }} </NuxtLink>
+						<NuxtLink class="navbar-link" :to="'/' + menu.name.toLowerCase()"> {{ menu.label }} </NuxtLink>
 						<div class="navbar-dropdown">
 							<NuxtLink
 								v-for="child in menu.children"
