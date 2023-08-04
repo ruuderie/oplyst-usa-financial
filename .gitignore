@@ -1,5 +1,5 @@
+# Node-related folders
 node_modules
-*.log*
 .nuxt
 .nitro
 .cache
@@ -9,3 +9,31 @@ dist
 .DS_Store
 .vscode
 .sfdx
+
+# Compiled Rust artifacts
+**/target/
+**/*.rs.bk
+
+# Compiled Vue.js artifacts
+/frontend/dist/
+/frontend/node_modules/
+
+# CSV and PDF files
+*.csv
+*.pdf
+
+# Logs
+*.log*
+
+# Editor files
+*.swp
+*.swo
+*.swn
+
+# macOS files
+.DS_Store
+
+# Other common files to ignore
+*.bak
+*.tmp
+*~
