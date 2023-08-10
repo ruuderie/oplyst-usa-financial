@@ -2,13 +2,18 @@
 import { ref, computed } from 'vue';
 const options = [
 	{
-		label: 'Home',
-		name: 'Home',
+		label: 'Our Company',
+		name: 'Our Company',
 		children: [
 			{ label: 'Overview', name: 'Overview' },
 			{ label: 'Values', name: 'Values' },
 			{ label: 'Mission', name: 'Mission' },
 		],
+	},
+	{
+		label: 'Partner with Us',
+		name: 'Partner with Us',
+		children: []
 	},
 	{
 		label: 'Services',
@@ -76,68 +81,90 @@ const toggleMenu = () => {
 	console.log('isActive.value : ', isActive.value);
 };
 </script>
-
 <template>
-	<div>
-		<nav class="navbar" role="navigation" aria-label="main navigation">
-			<div class="navbar-brand">
-				<NuxtLink class="navbar-item" to="/"> </NuxtLink>
-				<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" @click="toggleMenu">
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-				</a>
-			</div>
-
-			<div id="navbarStandard" class="navbar-menu" :class="{ 'is-active': isActive }">
-				<div class="navbar-start">
-					<div v-for="menu in options" :key="menu.label" class="navbar-item has-dropdown is-hoverable">
-						<NuxtLink class="navbar-link" :to="'/' + menu.name.toLowerCase()"> {{ menu.label }} </NuxtLink>
-						<div class="navbar-dropdown">
-							<NuxtLink
-								v-for="child in menu.children"
-								:key="child.label"
-								:to="'/' + menu.name.toLowerCase() + '/' + child.name.toLowerCase()"
-								class="navbar-item"
-								>{{ child.label }}</NuxtLink
-							>
-						</div>
+	<div class="hero-head">
+	  <nav class="navbar">
+		<div class="container">
+		  <div class="navbar-brand">
+			<NuxtLink class="navbar-item" to="/">
+			  Home
+			  <nuxt-img src="~/assets/Oplyst International White logo 800x600.png" alt="Logo" />
+			</NuxtLink>
+			<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" @click="toggleMenu">
+			  <span aria-hidden="true"></span>
+			  <span aria-hidden="true"></span>
+			  <span aria-hidden="true"></span>
+			</a>
+		  </div>
+  
+		  <div id="navbarStandard" class="navbar-menu" :class="{ 'is-active': isActive }">
+			<div class="navbar-end">
+				<div 
+					v-for="menu in options" 
+					:key="menu.label" 
+					class="navbar-item" 
+					:class="{ 'has-dropdown is-hoverable': menu.children && menu.children.length > 0 }"
+				>
+					<NuxtLink class="navbar-link" :to="'/' + menu.name.toLowerCase()"> {{ menu.label }} </NuxtLink>
+					<div v-if="menu.children && menu.children.length > 0" class="navbar-dropdown">
+						<NuxtLink
+							v-for="child in menu.children"
+							:key="child.label"
+							:to="'/' + menu.name.toLowerCase() + '/' + child.name.toLowerCase()"
+							class="navbar-item"
+						>
+							{{ child.label }}
+						</NuxtLink>
 					</div>
 				</div>
 			</div>
-		</nav>
+		  </div>
+		</div>
+	  </nav>
 	</div>
-</template>
+  </template>
+  
 
-<style scoped>
-.navbar {
-	background-color: #c2dbff; /* Goldman Sachs Dark Blue */
-}
-
-.navbar-item h2 {
-	color: #ffffff; /* White color for the text */
-}
-
-.navbar-burger {
-	color: #ffffff; /* White color for the burger menu */
-}
-
-.navbar-item.has-dropdown:hover .navbar-link {
-	color: #d4a017; /* Goldman Sachs Gold for hover state */
-}
-
-.navbar-item.has-dropdown:hover .navbar-dropdown,
-.navbar-item.has-dropdown.is-active .navbar-dropdown {
-	display: block;
-}
-
-.v-enter-active,
-.v-leave-active {
-	transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-	opacity: 0;
-}
-</style>
+  <style scoped>
+  .navbar {
+	  background-color: #003366; /* Dark blue, common in finance industries for trustworthiness */
+	  border-bottom: 1px solid #e0e0e0; /* A subtle border for separation */
+  }
+  
+  .navbar-item h2, .navbar-link, .navbar-item {
+	  color: #ffffff; /* White color for the text for contrast against the dark navbar */
+  }
+  
+  .navbar-burger {
+	  color: #ffffff; /* White color for the burger menu */
+  }
+  
+  .navbar-link:hover, .navbar-item:hover {
+	  background-color: #005699; /* Slightly lighter blue for hover effect */
+  }
+  
+  .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar-item.has-dropdown.is-active .navbar-link {
+	  color: #d4a017; /* A touch of gold for active/hovered dropdowns */
+	  background-color: #005699; /* Slightly lighter blue for hover effect */
+  }
+  
+  .navbar-dropdown {
+	  background-color: #004882; /* Even darker shade for the dropdown to distinguish it from the main bar */
+	  border: none; /* Remove any default borders */
+  }
+  
+  .navbar-dropdown .navbar-item:hover {
+	  background-color: #0066aa; /* A bit lighter blue for hover effect in dropdowns */
+  }
+  
+  .v-enter-active,
+  .v-leave-active {
+	  transition: opacity 0.5s ease;
+  }
+  
+  .v-enter-from,
+  .v-leave-to {
+	  opacity: 0;
+  }
+  </style>

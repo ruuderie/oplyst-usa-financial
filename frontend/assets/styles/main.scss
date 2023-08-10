@@ -1,46 +1,114 @@
-// Define color variables
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Goldman+Sachs');
+
 // Define color variables
 $dark-blue: rgb(34, 40, 49);
 $mid-blue: rgb(57, 62, 70);
 $turquoise: rgb(0, 173, 181);
 $light-gray: rgb(238, 238, 238);
+$purple: #8A4D76;
+$soft-yellow: #e4ed8e;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
 
-// Apply colors to different elements
+// Global settings
+$family-sans-serif: "Goldman Sachs", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $soft-yellow;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+$body-background-color: #FAFAFA; // Lighter gray background
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
 
+// Additional color variables for bank
+$primary-bg: #b0c7f9;   // Deep blue used in finance-hero
+$secondary-bg: $mid-blue; // Lighter blue for navbar
+$tertiary-bg: $light-gray; // Muted gray
 
+// Apply the colors to appropriate sections
 body {
-  background-color: $light-gray;
-  color: $mid-blue;
+    background-color: $body-background-color;
+    color: $dark-blue;
+    font-family: $family-sans-serif;
 }
+
 .navbar {
-  background-color: $light-gray;
-  color: $mid-blue;
+    background-color: $secondary-bg;
+    color: $light-gray; 
 }
 
+// Typography styles
 h1, h2, h3 {
-  color: $dark-blue;
+    color: $dark-blue;
 }
 
+.title, .subtitle {
+    color: $light-gray;
+    margin-bottom: 15px;
+}
+
+.benefits-list {
+    list-style-type: disc;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+.call-to-action {
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+.phone-number {
+    color: $dark-blue;
+    font-weight: bold;
+}
+
+// Anchor styles
 a {
-  color: $turquoise;
-  &:hover {
-    color: $mid-blue;
-  }
-}
-
-button {
-  background-color: $turquoise;
-  color: $turquoise;
-  &:hover {
-    background-color: $turquoise;
     color: $turquoise;
-  }
+
+    &:hover {
+        color: $mid-blue;
+    }
 }
+
+// Button styles
+button {
+    background-color: $turquoise;
+    color: $light-gray;
+  
+    &:hover {
+        background-color: darken($turquoise, 10%);
+    }
+}
+
+// Footer styles
 footer {
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  background-color: $light-gray;
-
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: $tertiary-bg;
+    color: $dark-blue; 
 }
 
+// Import Bulma
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";

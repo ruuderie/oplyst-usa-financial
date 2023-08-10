@@ -123,3 +123,83 @@ const submitForm = () => {
 		</NuxtLayout>
 	</div>
 </template>
+<style scoped>
+
+/* Base colors */
+:root {
+    --primary-color: #003366;  /* As taken from the navbar */
+    --secondary-color: #f4f4f4; 
+    --accent-color: #d4a017;  /* Gold color for accents */
+    --text-color: #ffffff;
+    --border-color: #e0e0e0;  /* As taken from the navbar */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+}
+
+/* Titles and subtitles */
+.title, .subtitle {
+    color: var(--primary-color);
+}
+
+/* Buttons */
+.button {
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    transition: background-color 0.3s ease;
+}
+
+.button.is-primary:hover {
+    background-color: var(--accent-color);
+}
+
+/* Input fields */
+.input {
+    border-color: var(--border-color);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* Content styles */
+.content {
+    line-height: 1.6;
+}
+
+.content h2, .content h3 {
+    margin-top: 1em;
+    color: var(--primary-color);
+}
+
+.content p {
+    margin-top: 0.5em;
+    color: var(--primary-color);
+}
+
+/* Layout and structure */
+.is-fluid {
+    padding: 1em;
+}
+
+.field label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    display: block;
+    color: var(--primary-color);
+}
+
+/* Hero section */
+.hero.is-small.is-primary {
+    background-color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.hero-body {
+    padding: 2em 1em;
+}
+
+</style>
+

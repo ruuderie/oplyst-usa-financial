@@ -1,70 +1,66 @@
-<script setup>
-import { ref, onMounted } from "vue";
+<template>
+  <div class="is-responsive is-mobile finance-theme">
+    <NuxtLayout>
+      <section class="hero finance-hero is-small is-fluid">
+        <div class="hero-body is-fluid">
+          <div class="my-3 has-text-centered">
+            <p class="title">About Oplyst International, LLC</p>
+            <p class="subtitle">
+              Your Dedicated Partner in Commercial Finance Solutions.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      <section class="container finance-content is-fluid">
+        <div class="my-6 py-4">
+          <p>
+            As pioneers in the commercial finance sector, we extend our services nationwide, recognizing the pivotal role of capital in spearheading growth and success for businesses. Whether you're at the inception of your small venture or steering a medium-sized enterprise, our commitment is unwavering in ensuring you access the funding you need.
+          </p>
+          <p>
+            Our seasoned team boasts a wealth of knowledge, rooted in decades of collective experience within the commercial finance realm. We're not just financiers; we are specialists in both commercial real estate financing and business growth financing. Our proficiency allows us to discern the distinct challenges that businesses encounter, propelling us to craft strategies that help them not only meet but surpass their aspirations.
+          </p>
+          <h2>Why Choose Oplyst International, LLC?</h2>
+          <ul>
+            <li><strong>Inclusivity in Finance:</strong> We champion the belief that every business, irrespective of size, should access the capital they require. Our qualification criteria are designed to be accommodating, enabling a broad spectrum of businesses to benefit from our services.</li>
+            <li><strong>Diverse Financial Products:</strong> Our arsenal of financial solutions is varied and comprehensive. Whether it's SBA loans, business acquisition funds, working capital, equity raises for ventures and real estate, or guidance in transitioning to a public entity, we've got you covered.</li>
+            <li><strong>Bespoke Solutions:</strong> At Oplyst International, LLC, we don't believe in a one-size-fits-all approach. We delve into understanding your business nuances and aspirations, ensuring the solutions we offer are tailor-made for your unique requirements.</li>
+            <li><strong>Unparalleled Client Experience:</strong> Our commitment is not just to finance, but also to ensure your journey with us is smooth and devoid of hassles. Engaging with us assures you of a professional and seamless experience, giving you the tranquillity that your business’s financial realm is adeptly managed.</li>
+          </ul>
+          <p>
+            Reputed for our unwavering dedication and reliability, our name resonates with trust in the industry. Whether you're kickstarting your dream or are an established name, Oplyst International is geared to cater to your financial needs. Reach out to us for a complimentary consultation and let us embark on a successful journey together.
+          </p>
+        </div>
+      </section>
+    </NuxtLayout>
+  </div>
+</template>
 
-const post = {
-  summary: "This is a summary",
-  title: "About Ruud",
-  featured_image: "https://example.com/image.png",
-
+<style scoped>
+.finance-theme {
+    font-family: 'Goldman Sachs', sans-serif;
+    background-color: #FFFFFF; /* Updated for better readability */
 }
 
-</script>
+.finance-hero {
+    background-color: #0269be; /* Deep blue for the hero section */
+    color: #FFFFFF; /* White text on blue background */
+}
 
-<template>
-<div>
-      <Head>
-        <Title> {{ post.title }} </Title>
-        <Meta name="description" :content="post.summary" />
-        <Meta property="og:title" :content="post.title" />
-        <Meta name="twitter:title" :content="post.title" />
-        <Meta
-          property="og:description"
-          :content="post.summary"
-        />
-        <Meta
-          name="twitter:description"
-          :content="post.summary"
-        />
-        <Meta
-          property="og:image"
-          :content="post.featured_image"
-        />
-        <Meta
-          property="twitter:image"
-          :content="post.featured_image"
-        />
-      </Head>
-      <NuxtLayout>
-        <div class="container is-fluid">
-          <section id="hero" class="hero is-medium">
-                  <div class="hero-body">
-                      <h1 class="title">
-                          {{post.title}}
-                      </h1>
-                  </div>
-        </section>
-        <div class="content is-large">
-                <h3 class="has-text-centered">Ruud Erie </h3> 
-                <p>Ruud Erie is a highly respected software architect and engineer who specializes in developing high performance applications that meet rapidly changing consumer demands and business needs. With his deep expertise in software architecture and agile-friendly digital transformation, he is a sought-after consultant who regularly delivers results across the globe.</p>
-                <p>Ruud has extensive experience working with top-tier companies on a wide range of projects, including enterprise applications and cloud-based solutions. He is particularly skilled in using enterprise platforms such as Salesforce, AWS, Google Cloud, and Microsoft Azure to deliver optimal results.</p>
-                <p>With a proven track record of enterprise implementations, Ruud began his career freelancing while working as poker dealer at a casino. One day he built an application to help his managers give him more overtime and ended up working as a software engineer for a leading consulting company in Hartford, Connecticut.</p>
-                <p>He then began doing Product Development in the Salesforce space. He was part of three very successful start-ups including Evariant which eventually got aquired in 2020. After working in enterprise product development. Ruud expanded into consulting full-time and helping other great companies produce great products and successful digital transformations using his expertise. </p>
-                <p>Ruud has held a range of key roles throughout his career, including software engineer, software architect, solution architect, technical manager, project manager, and consultant.</p>
-                <p>Whether you need hands-on support or strategic leadership in your software projects, Ruud is an ideal partner. He is available to work with your team in a variety of capacities, from keynotes and consulting to training and more. </p>
-                <p>To learn more about how Ruud can help your organization succeed, schedule a chat with him today.</p>  
-            </div>
-          </div>
-          <div class="has-text-centered py-3 mx-3 my-3">
-                <button class="button is-large is-responsive">
-                        Schedule a free discovery call
-                </button>
-            </div>
-      </NuxtLayout>
+.finance-content {
+    color: #00447A; /* Deep blue for the main content for better readability */
+    line-height: 1.6; /* Improved line spacing for better readability */
+}
 
-    </div>
+.title, .subtitle {
+    margin-bottom: 15px;
+}
 
-  </template>
+.container a:hover {
+    border-bottom: 2px solid #00447A;
+}
 
-<style>
-
+.container a:active {
+    color: #FFFFFF;
+}
 </style>
