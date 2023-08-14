@@ -21,16 +21,16 @@ const {
 <div class="card is-6">
   <div v-if="imageSource" class="card-image">
     <figure class="image is-4by3">
-      <nuxt-img class="img" 
+      <img class="img" 
         :src="imageSource"
         alt="Oplyst International - Pioneering Commercial Lending Solutions" 
       />
     </figure>
   </div>
-  <div class="card-content">
+  <div class="card-content has-text-centered">
     <div class="media">
       <div class="media-content">
-        <p class="card-title is-4">{{ name }}</p>
+        <h2 class="card-title is-size-3">{{ name }}</h2>
       </div>
     </div>
 
@@ -66,11 +66,11 @@ const {
 .card-title {
     color: #003366; /* Dark blue for the title */
     font-weight: bold; /* Bold for emphasis */
-    margin-bottom: 1.5rem; /* Space between title and content */
+    margin-bottom: 2.5rem; /* Space between title and content */
 }
 
 .content {
     color: #333333; /* A slightly softer color for the text, good for reading */
-    font-size: 1.2rem; /* Clear, readable font size */
+    font-size: 1.5rem; /* Clear, readable font size */
 }
 </style>

@@ -2,30 +2,113 @@
 import { ref } from "vue";
 import Card from "@/components/Card.vue";
 
-const industries = ref([
-  { id: 1, name: 'Real estate', description: 'Partnering with property professionals for value-creating solutions.', imageSource: ""},
-  { id: 2, name: 'Healthcare', description: 'Energizing the pulse of healthcare with financial vitality.', imageSource: "" },
-  { id: 3, name: 'Manufacturing', description: 'Powering production lines with efficient financial engines.', imageSource: "" },
-  { id: 4, name: 'Retail', description: 'Revitalizing retail with creative, customer-focused finance.', imageSource: "" },
-  { id: 5, name: 'Financial services', description: 'Fostering growth in finance with innovative lending strategies.', imageSource: "" },
-  { id: 6, name: 'Technology', description: 'Fueling the future of tech with targeted financial tools.', imageSource: "" },
-]);
+// Define a reactive variable for the asset path
+const logoSrc = ref('@/assets/Oplyst_International_White_logo_800x600.png');
 
-const services = ref([
-  { id: 1, name: 'Real estate loans', description: 'Tailored financing solutions for your property ambitions.', imageSource: "" },
-  { id: 2, name: 'Equipment loans', description: 'Invest in your business growth with strategic equipment financing.', imageSource: "" },
-  { id: 3, name: 'Lines of credit', description: 'Flexible access to funds whenever your business needs it.', imageSource: "" },
-  { id: 4, name: 'Accounts Receivable finance', description: 'Boost your cash flow by leveraging your receivables.', imageSource: "" },
-  { id: 5, name: 'Startups', description: 'Kickstart your dream venture with our bespoke financing options.', imageSource: "" },
-  { id: 6, name: 'Merchant Cash Advance', description: 'Meet your short-term needs with our quick and easy cash advances.', imageSource: "" },
-]);
+// A method to check if the asset is available
+// (this is a basic example, you might want a more sophisticated check in a real application)
+const hasLogo = computed(() => {
+  return logoSrc.value !== '';
+});
+
+const industries = [
+  { 
+    id: 1, 
+    name: 'Real Estate', 
+    description: 'We help property experts get the best financial solutions, making your property projects successful.', 
+    imageSource: "",
+    route:"industries/real-estate"
+  },
+  { 
+    id: 2, 
+    name: 'Construction', 
+    description: 'Building something great? Our innovative loans will help you every step of the way.', 
+    imageSource: "",
+    route:"industries/construction"
+  },
+  { 
+    id: 3, 
+    name: 'Healthcare', 
+    description: 'We boost healthcare with smart financial solutions, helping you take care of what matters most.', 
+    imageSource: "",
+    route:"industries/healthcare"
+  },
+  { 
+    id: 4, 
+    name: 'Cannabis', 
+    description: 'We have the right financial tools to help the future of the cannabis tech industry grow.',
+    imageSource: "",
+    route:"industries/cannabis"
+  },
+  { 
+    id: 5, 
+    name: 'Manufacturing', 
+    description: 'Your production needs strong financial backing. We\'re here to power it up.', 
+    imageSource: "",
+    route:"industries/manufacturing"
+  },
+  { 
+    id: 6, 
+    name: 'Logistics', 
+    description: 'For every owner operator out there, we provide financing that keeps you on the road and able to meet demand.', 
+    imageSource: "",
+    route:"industries/retail"
+  }
+];
+
+const services = [
+  { 
+    id: 1, 
+    name: 'Real Estate Loans', 
+    description: 'Get the right funding for homes, offices, or construction projects. We\'re here to back your property dreams.',
+    imageSource: "",
+    route:"services/commercial-mortgages"
+  },
+  { 
+    id: 2, 
+    name: 'Equipment Financing', 
+    description: 'Don\'t let the cost of tools slow you down. We\'ll help you lease the equipment, so you can keep working.',
+    imageSource: "",
+    route:"services/equipment-loans"
+  },
+  { 
+    id: 3, 
+    name: 'SBA Loans', 
+    description: 'Small businesses deserve support. With our government-backed loans, you can fund any aspect of your venture.',
+    imageSource: "",
+    route:"services/sba-loans"
+  },
+  { 
+    id: 4, 
+    name: 'Merchant Cash Advance', 
+    description: 'Short on cash? We offer quick funds based on your future sales.',
+    imageSource: "",
+    route:"services/merchant-cash-advance"
+  },
+  { 
+    id: 5, 
+    name: 'More Services', 
+    description: 'View the entire range of loan products we can provide to help your business grow.',
+    imageSource: "",
+    route:"/services"
+
+  },
+  { 
+    id: 6, 
+    name: 'Healthcare Loans', 
+    description: 'Whether it\'s for new equipment, expansion or payroll we have many specialized offerings by various lenders.', 
+    imageSource: "",
+    route:"industries/healthcare"
+  }];
+
 
 
 </script>
 
 <template>
-<div class="page-container">
+<div class="container is-fluid">
 <div>
+  <!--
   <Head>
     <Title>Oplyst International | Innovation, Integrity, Impact</Title>
     <Link 
@@ -38,86 +121,111 @@ const services = ref([
     <Link 
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" 
       rel="stylesheet"> </Link>        
-  </Head>
+  </Head> -->
   <NuxtLayout>
-    <section class="container is-small">
-      <nuxt-img 
+    <!-- <section class="container is-small">
+      <img 
         src="@/assets/david-kiriakidis-bP0q3tTTHS4-unsplash.jpg"
         alt="Oplyst International - Pioneering Commercial Lending Solutions" 
-      />
-    </section > 
-    <section id="hero" class="hero is-large">
+      /> 
+      <img class="w-full h-auto" 
+      width="1920" 
+      height="1422" 
+      src="@/assets/david-kiriakidis-bP0q3tTTHS4-unsplash.jpg" 
+      alt="Narwin waving while standing in front of a vast horizon of ocean waves and mountains">
+      
+    </section >  -->
+    <section class="hero is-fullwidth has-background-dark">
+      
       <div class="hero-body">
-        <nuxt-img src="@/assets/Oplyst International White logo 800x600.png" alt="Logo"/>
 
-        <h1 class="title">
-          Oplyst International, LLC
-        </h1>
-        <nuxt-img src="~/assets/Oplyst International White logo 800x600.png" alt="Logo" />
 
-        <h3 class="subtitle">
-          Commercial Financing Solutions for Forward-Thinking Enterprises
-        </h3>
-        <p>
-          <ul>
-            <li>
-              <NuxtLink class="tag" to="https://www.linkedin.com/company/oplystusa/">
-                @oplyst-international
-              </NuxtLink>
-            </li>
-          </ul>
-        </p>
+        <div class="container is-fluid">
+          <NuxtLink class="tag" to="https://www.linkedin.com/company/oplystusa/">@oplyst-international</NuxtLink>
+          <h3 class="title is-3 has-text-white">
+            Elevate Your Ambitions: Direct, Fast, and Tailored Business Financing.
+          </h3>
+        </div>
       </div>
+    </section>    
 
-      <center>
-        <p class="title py-2">
-          Commercial Lending Solutions for Real Estate and Business.
-        </p>
-        <p class="subtitle py-2">
-          We deliver innovative technology solutions, efficient logistics services, and strategic financial products to empower enterprises.
-        </p>
-      </center>     
-    </section>
-    <section class="container is-small py-3">
-      <div class="level">                    
-        <div class="level-item has-text-centered">
-          <div class="box">
-            <input class="input is-small py-4 mx-3 my-3" type="name" placeholder="First Name">
-            <input class="input is-small py-4 mx-3" type="email" placeholder="email@yourcompany.com">
-            <button class="button is-medium mx-3 my-3 is-responsive">
-              Stay Informed
-            </button>
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="field has-addons">
+              <p class="control">
+                <input class="input" type="text" placeholder="First Name">
+              </p>
+              <p class="control">
+                <input class="input" type="email" placeholder="email@yourcompany.com">
+              </p>
+              <p class="control">
+                <button class="button is-info">Stay Informed</button>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="container is-medium py-6 has-text-centered">
-      <h2 class="has-text-weight-bold">Our Services</h2>
-      <div class="row">
-        <div class="col-lg-4" v-for="service in services" :key="service.id">
-          <card
-            :id="service.id.toString()"
-            :name="service.name"
-            :description="service.description"
-            :imageSource="service.imageSource"
-          />
+    <!--  <h2 class="statement">
+            Dynamic Lending and Financing for Modern Real Estate and Business Goals.
+        </h2> -->
+    <section class="section">
+    <div class="container">
+      <h2 class="statement has-text-centered">Tailored Business Funding Service with Precision Matching</h2>
+      
+      <div class="columns">
+        
+        <div class="column is-one-third">
+          <h3 class="statement-subtitle">Swift and Simple Application Process</h3>
+          <p>
+            Just fill out our brief online form or contact us at [PHONE]. Designed for businesses operational for at least 2 months and boasting a monthly revenue of over $10,000, we ensure your time is well-spent.
+          </p>
+        </div>
+
+        <div class="column is-one-third">
+          <h3 class="statement-subtitle">Expert Loan Underwriting for Your Profile</h3>
+          <p>
+            Our seasoned underwriters meticulously review your application, ensuring you're perfectly matched. Based on your unique profile, we connect you to lenders who are actively seeking businesses with your exact credentials.
+          </p>
+        </div>
+
+        <div class="column is-one-third">
+          <h3 class="statement-subtitle">Direct Connection to Suitable Lenders</h3>
+          <p>
+            Gone are the days of one-size-fits-all loan offers. We specialize in pairing you with lenders that match your profile, expediting approval processes. With our precision-matching, you could potentially access funds on the very same day of your application.
+          </p>
+        </div>
+
+      </div>
+    </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="has-text-centered is-size-1 statement">How we help</h2>
+        <div class="columns is-multiline">
+          <div class="column is-one-third has-text-centered" v-for="service in services" :key="service.id">
+            <NuxtLink :to="service.route">
+              <Card :id="service.id.toString()" :name="service.name" :description="service.description" :imageSource="service.imageSource" />
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="container is-medium py-6 has-text-centered">
-      <h2 class="has-text-weight-bold">Industries We Serve</h2>
-      <div class="row">
-        <div class="col-lg-4" v-for="industry in industries" :key="industry.id">
-          <card
-            :id="industry.id.toString()"
-            :name="industry.name"
-            :description="industry.description"
-            :imageSource="industry.imageSource"
-          />
+    <section class="section">
+      <div class="container">
+        <h2 class="statement has-text-centered is-size-1">Industries We Serve</h2>
+        <div class="columns is-multiline">
+          <div class="column is-one-third" v-for="industry in industries" :key="industry.id">
+            <NuxtLink :to="industry.route">
+            <Card :id="industry.id.toString()" :name="industry.name" :description="industry.description" :imageSource="industry.imageSource" />
+            </NuxtLink>
+          </div>
         </div>
       </div>
-    </section>   
+    </section>  
     <span class="mb-2 pb-2"/>
 
     <nuxt-img 
@@ -126,64 +234,130 @@ const services = ref([
           class="about-image"
         />
     <section class="section is-medium is-mobile has-text-centered">
-      <h1 class="title">Our Values</h1>
+      <h1 class="statement">Our Values</h1>
       <ul>
-        <li class="subtitle">Innovation</li>
-        <li class="subtitle">Simplicity</li>
-        <li class="subtitle">Excellence</li>
-        <li class="subtitle">Privacy</li>
-        <li class="subtitle">Client Service</li>
-        <li class="subtitle">Integrity</li>
-        <li class="subtitle">Teamwork</li>
+        <li class="statement-subtitle">Innovation</li>
+        <li class="statement-subtitle">Simplicity</li>
+        <li class="statement-subtitle">Excellence</li>
+        <li class="statement-subtitle">Privacy</li>
+        <li class="statement-subtitle">Client Service</li>
+        <li class="statement-subtitle">Integrity</li>
+        <li class="statement-subtitle">Teamwork</li>
       </ul>
     </section>
-    <section class="section is-medium is-mobile">
+
+
+    <section class="section is-medium is-flex-mobile">
+      <div class="has-text-centered py-3">
+        <button class="button is-large is-responsive">
+            Schedule a Discovery Call
+        </button>
+      </div>
       <div class="content is-large">
 
         <center> <h3>Oplyst International </h3> </center>
         <p>At Oplyst International, we are innovators, disruptors, and pioneers. Our unique combination of technology, logistics, and financial advisory allows us to provide holistic solutions to complex challenges. We do business with integrity, fostering long-term partnerships based on mutual trust and respect.</p>
         <p>With a firm commitment to simplicity, quality, and service, we prioritize client satisfaction and champion a future where businesses thrive. Oplyst International is more than just a company - we are shaping the future. Schedule a chat with us today to learn more about our vision, mission, and the services we offer.</p>  
       </div>
-      <div class="has-text-centered py-3">
-        <button class="button is-large is-responsive">
-            Schedule a Discovery Call
-        </button>
-      </div>
+
     </section>
   </NuxtLayout>
 </div>
 </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 body {
   font-family: 'Goldman Sans', sans-serif;
-  font-weight: 400; /* Using the regular weight for body text */
+  font-weight: 400; // Using the regular weight for body text
   font-size: 16px;
   line-height: 1.6;
-  color: #333; /* Darker color for better contrast */
-}
-/*
-.page-container {
-  padding: 2rem;
-}
-*/
-.hero {
-  background-color: #f4f4f4;
+  color: #333; // Darker color for better contrast
 }
 
-.title, .subtitle {
+
+.section {
+  h3.subtitle {
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+}
+.hero {
+  background-color: #000000;
+ // background-image: url("@/assets/salym.eth_Image_of_a_vintage_ship_with_billowing_sails_navigati_3e5a3024-b213-47d3-b9b1-6a5f4fe59c55.png");
+  background-image: url("@/assets/salym.eth_Image_of_a_vintage_ship_with_billowing_sails_navigati_.svg");
+  background-size: cover; // changed to cover so it fills the container
+  background-repeat: no-repeat;
+  background-position: center;
+  //max-width: 200%;
+ // max-height: 200%;
+ // max-height: 640px;  // set max height to the height of your image
+  overflow: hidden;
+
+  @media (max-width: 768px) { // when the screen width is 768px or less
+    max-height: 300px;  // adjust based on your preference for mobile view
+  }
+}
+.statement{
   color: #003366;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.statement-subtitle{
+  color: #003366;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+.hero-body {
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+    justify-content: center;
+    text-align: center; // This will make sure text inside the hero-body is also centered
+}
+
+.logo-img {
+  margin-top: -350px;
+  max-width: 30%;
+  max-height: 30%;
+}
+
+
+.title, .subtitle {
+  color: #e6e9eb;
+  outline: olive;
+  outline-offset: 1cm;
+  font-weight: 700;
+  font-size: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 }
 
 #hero .title {
-  font-size: 3rem; /* Made the title slightly bigger */
-  font-weight: 700; /* Bold for emphasis */
+  font-size: 3rem; // Made the title slightly bigger
+  font-weight: 700; // Bold for emphasis
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 }
 
 #hero .subtitle {
-  font-size: 1.8rem; /* Increased font size */
-  margin-top: 1rem;
-  font-weight: 400; /* Regular weight for better readability */
+  font-size: 1.8rem; // Increased font size
+  margin-top: 3rem;
+  font-weight: 700; // Regular weight for better readability
+  
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
 }
 
 .tag {
@@ -192,7 +366,7 @@ body {
   padding: 0.5rem;
   border-radius: 15px;
   transition: background-color 0.3s;
-  
+
   &:hover {
     background-color: darken(#003366, 10%);
   }
@@ -201,6 +375,11 @@ body {
 .input, .button {
   border-radius: 5px;
   margin: 0.5rem 0;
+  
+  @media (max-width: 768px) {
+    width: 100%; // Making the input and button 100% width on mobile
+    margin: 0.3rem 0;
+  }
 }
 
 .button {
@@ -217,23 +396,30 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  
+
   .col-lg-4 {
-    flex: 0 0 calc(33.3333% - 1rem);
+    flex: 0 0 calc(33.3333% - 1rem); 
     margin: 0.5rem;
+
+    @media (max-width: 768px) {
+      flex: 0 0 100%; // This ensures the cards take the full width on mobile
+      margin: 0.5rem 0; // Adjust margin as needed
+    }
   }
 }
 
+
 .about-image {
   max-width: 100%;
+  max-height: 20%;
   margin-bottom: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .content {
-  font-size: 1.4rem; /* Slightly larger font size */
-  line-height: 1.7; /* Improved line spacing */
+  font-size: 1.4rem; // Slightly larger font size
+  line-height: 1.7; // Improved line spacing
   color: #333333;
 }
 
@@ -244,3 +430,4 @@ body {
   border-bottom: 1px solid #e0e0e0;
 }
 </style>
+

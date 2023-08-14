@@ -2,80 +2,76 @@
 import { ref, computed } from 'vue';
 import LandingPage from '@/components/LandingPage.vue';
 
-const content = ref({
-	industryName: 'Comprehensive Financial Services',
-	industryDescription:
-		'Oplyst International, LLC is proud to offer a comprehensive suite of financial solutions to fuel your business growth. Our experienced team understands the unique challenges of various industries, and we provide customized financial solutions, including Commercial Mortgages, Equipment Loans, Lines of Credit, Invoice Financing, Startup Loans, SBA Loans, and Merchant Cash Advances.',
-	pageTitle: 'Our Services: Tailored Financial Solutions to Propel Your Business',
-	subTitle: 'Explore Our Suite of Customized Loan Options',
-	heroImage:
-		'[Image showcasing various industry sectors with the corresponding financial services icons overlaid, symbolizing the broad range of our financial solutions.]',
-	why: {
-		items: [
-			{
-				description:
-					'We offer a wide range of financial services tailored to meet your specific business needs.',
-			},
-			{
-				description: 'Our team of experts is dedicated to helping you achieve your business goals.',
-			},
-			{
-				description: 'We work closely with you to understand your business and provide the best solutions.',
-			},
-			{
-				description: 'Our innovative solutions are designed to help you grow and succeed in your industry.',
-			},
-		],
-	},
-	services: {
-		items: [
-			{
-				title: 'Commercial Mortgages',
-				description: 'Flexible financing solutions for real estate purchases, expansions, and renovations.',
-			},
-			{
-				title: 'Equipment Loans',
-				description: 'Customized loans for purchasing or upgrading essential machinery and technology.',
-			},
-			{
-				title: 'Lines of Credit',
-				description: 'Accessible financial support for your daily business operations.',
-			},
-			{
-				title: 'Invoice Financing',
-				description: 'Optimize your cash flow by financing against unpaid invoices.',
-			},
-			{
-				title: 'Startup Loans',
-				description: 'Supporting new ventures with specialized financing solutions.',
-			},
-			{
-				title: 'SBA Loans',
-				description: 'Leverage government-guaranteed loans for your small business needs.',
-			},
-			{
-				title: 'Merchant Cash Advance',
-				description: 'Access quick cash advance against your future credit card sales.',
-			},
-		],
-	},
-	callToAction: 'Ready to accelerate your business growth with our specialized financial services? Contact us today!',
-	faq: 'Have questions about our loan services? Visit our FAQ section below or reach out to us for more information.',
-});
+const services = ref([
+  { 
+    id: 1, 
+    name: 'Real Estate Loans', 
+    description: 'Get the right funding for homes, offices, or construction projects. We\'re here to back your property dreams.', 
+    imageSource: "" 
+  },
+  { 
+    id: 2, 
+    name: 'Equipment Financing', 
+    description: 'Don\'t let the cost of tools slow you down. We\'ll help you lease the equipment, so you can keep working.', 
+    imageSource: "" 
+  },
+  { 
+    id: 3, 
+    name: 'SBA Loans', 
+    description: 'Small businesses deserve support. With our government-backed loans, you can fund any aspect of your venture.', 
+    imageSource: "" 
+  },
+  { 
+    id: 4, 
+    name: 'Lines of Credit', 
+    description: 'Get money when you need it. Only pay for what you use. It\'s as simple as that.', 
+    imageSource: "" 
+  },
+  { 
+    id: 5, 
+    name: 'Merchant Cash Advance', 
+    description: 'Short on cash? We offer quick funds based on your future sales.', 
+    imageSource: "" 
+  },
+  { 
+    id: 6, 
+    name: 'Startups', 
+    description: 'If you\'re a VC-Backed start-up we have we\'ve got special finance plans just for you.', 
+    imageSource: "" 
+  },
+  { 
+    id: 7, 
+    name: 'Term Loans', 
+    description: 'Regular business loans with a fixed end date. Offered by various lenders, including banks and community groups.', 
+    imageSource: "" 
+  },
+  { 
+    id: 8, 
+    name: 'Asset-Based Financing', 
+    description: 'Use your business assets to get a loan. Whether it\'s real estate, equipment, or inventory, we\'ve got you covered.', 
+    imageSource: "" 
+  },
+  { 
+    id: 9, 
+    name: 'Bridge Loans', 
+    description: 'Temporary funding to keep things moving. Useful when you\'re waiting for other funds to come in.', 
+    imageSource: "" 
+  }
+
+]);
 </script>
 
 <template>
 	<div>
-		<LandingPage
-			:page-title="content.pageTitle"
-			:sub-title="content.subTitle"
-			:industry-name="content.industryName"
-			:industry-description="content.industryDescription"
-			:why-items="content.why.items"
-			:services-items="content.services.items"
-			:case-studies="content.caseStudies"
-			:faq="content.faq"
-			:call-to-action="content.callToAction"
-		/>
+		<section class="section">
+      <div class="container">
+        <h2 class="has-text-centered is-size-1 statement">How we help</h2>
+        <div class="columns is-multiline">
+          <div class="column is-one-third has-text-centered" v-for="service in services" :key="service.id">
+            <Card :id="service.id.toString()" :name="service.name" :description="service.description" :imageSource="service.imageSource" />
+          </div>
+        </div>
+      </div>
+    </section>
 	</div>
 </template>

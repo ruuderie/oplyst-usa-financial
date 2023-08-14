@@ -1,7 +1,7 @@
 <script setup>
 </script>
 
-<template class="page-container">
+<template>
   <NuxtPage/>
 </template>
 

@@ -1,46 +1,35 @@
 <template>
-    <div class="page-container">
-        <TheNavBar class="page-container__navbar" />
+    <div class="page-container container is-fluid">
+        <TheNavBar class="page-container__navbar navbar" />
 
-        <main class="page-container__content">
-            <div class="content-wrapper">
+        <main class="page-container__content section">
+            <div class="content-wrapper container is-fluid">
                 <slot />
             </div>
         </main>
 
-        <TheAppFooter class="page-container__footer" />
+        <TheAppFooter class="page-container__footer footer container is-fluid" />
     </div>
 </template>
 
+
 <style scoped>
 .page-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f4f7fa; /* Light gray for a neutral background */
+    background-color: #f4f7fa;
 }
 
 .page-container__navbar {
-    flex-shrink: 0;
-    background-color: #003366; /* Dark blue for contrast and trustworthiness */
+    background-color: #003366;
     color: #fff;
 }
 
-.page-container__content {
-    flex-grow: 1;
-    padding: 2rem 1rem;
-    background-color: #ffffff; /* White background for the main content area */
-}
-
 .content-wrapper {
-    max-width: 1200px; /* Define a maximum width for readability */
-    margin: 0 auto; /* Centers the content */
-    padding: 1rem; /* Additional padding around the content */
+  /*  margin-top: 2rem; /* Spacing */
+    margin-bottom: 2rem; /* Spacing */
 }
 
 .page-container__footer {
-    flex-shrink: 0;
-    background-color: #003366; /* Matching the navbar */
+    background-color: #003366;
     color: #fff;
 }
 </style>

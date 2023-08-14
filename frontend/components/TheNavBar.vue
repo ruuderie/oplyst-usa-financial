@@ -13,7 +13,10 @@ const options = [
 	{
 		label: 'Partner with Us',
 		name: 'Partner with Us',
-		children: []
+		children: [			
+			{ label: 'Brokers', name: 'Brokers' },
+			{ label: 'Lenders', name: 'Lenders' },
+		]
 	},
 	{
 		label: 'Services',
@@ -87,8 +90,7 @@ const toggleMenu = () => {
 		<div class="container">
 		  <div class="navbar-brand">
 			<NuxtLink class="navbar-item" to="/">
-			  Home
-			  <nuxt-img src="~/assets/Oplyst International White logo 800x600.png" alt="Logo" />
+			  <img src="@/assets/Oplyst_International_Black_Logo_100x70.png" alt="Logo" class="navbar-logo"/>
 			</NuxtLink>
 			<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" @click="toggleMenu">
 			  <span aria-hidden="true"></span>
@@ -130,9 +132,15 @@ const toggleMenu = () => {
 	  background-color: #003366; /* Dark blue, common in finance industries for trustworthiness */
 	  border-bottom: 1px solid #e0e0e0; /* A subtle border for separation */
   }
+.navbar-logo {
+  width: 170%; /* Adjust width as per your requirement */
+  height: 170%; /* Maintain the aspect ratio */
+}
+
   
   .navbar-item h2, .navbar-link, .navbar-item {
 	  color: #ffffff; /* White color for the text for contrast against the dark navbar */
+	  font-size: 1.125rem;
   }
   
   .navbar-burger {
