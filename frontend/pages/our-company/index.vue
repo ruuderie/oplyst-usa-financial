@@ -6,18 +6,35 @@
             <section class="hero finance-hero is-small is-primary is-fluid">
                 <div class="hero-body is-fluid">
                     <div class="my-3 has-text-centered">
-                        <p class="title">Our Company</p>
-                        <span/>
+                        <p class="title">Welcome to Oplyst International, LLC</p>
                         <p class="subtitle">
-                        At Oplyst International, LLC, we understand the myriad challenges encountered by small to middle market enterprises across diverse economic and business cycles. Boasting a vast network of over 300 lenders, we confidently facilitate loans spanning from $100,000 to an impressive $200 million+. Our lending repertoire includes Term Loans, Asset-based Loans, Invoice Factoring, Trade Finance, Equipment Financing, and Commercial Mortgage Loans, catering to a spectrum of financial needs.
+                            The future of financial solutions. We are the trusted choice for leading enterprises, with
+                            100+ innovative solutions, 50+ global partners, and 1000+ satisfied clients. We stand as
+                            innovators, disruptors, and pioneers in redefining industry boundaries.
                         </p>
                     </div>
                 </div>
             </section>
             <section class="finance-content is-fluid">
                 <div class="section-content my-6 py-4">
+                    <h2 class="title">Overview</h2>
                     <p class="subtitle">
-                        Established in 2012 in Stamford, Connecticut, our primary goal is to support outstanding businesses led by dedicated management teams with innovative ideas, products, and services. We are driven by the potential for meaningful global progress and seek to fund initiatives aligned with this mission. We are here to facilitate the growth, stability, and success of businesses. Contact us to explore how we can assist in your journey to success.
+                        Explore a future shaped by innovation with Oplyst International, LLC. As disruptors and
+                        pioneers, we challenge conventional industry boundaries, focusing on simplicity, quality,
+                        and service. Our impact is demonstrated through over 100 innovative solutions, partnerships
+                        with over 50 global entities, and a growing network of more than 1000 satisfied clients.
+                        Experience the disruptive force of Oplyst, trusted by leading enterprises worldwide.
+                    </p>
+                </div>
+                <div class="section-content my-6 py-4">
+                    <h2 class="title">Values</h2>
+                    <p class="subtitle">
+                        Oplyst International isn't just a company – we're a mindset, a disruptive force. Our
+                        strength lies in our unique blend of technology, logistics, and financial advisory. We hold
+                        dear the values of quality, simplicity, and client satisfaction, ensuring that these
+                        principles guide us in providing holistic solutions to complex challenges. With Oplyst,
+                        you're not just getting a service – you're joining a forward-thinking community of
+                        innovators and pioneers.
                     </p>
                 </div>
                 <div class="section-content my-6 py-4">
