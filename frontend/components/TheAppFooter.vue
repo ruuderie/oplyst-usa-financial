@@ -70,7 +70,7 @@ const currentYear = computed(() => {
   background-color: #003366; // Matching with the navbar background color
   color: #ffffff; // Keeping the text color white for contrast
   border-top: 1px solid #e0e0e0; // Light gray border for separation from main content
-  
+  border: 2px solid #FF5733;
   &.py-6 {
     padding: 3rem 1.5rem; // Increasing the padding to provide more breathing space
   }

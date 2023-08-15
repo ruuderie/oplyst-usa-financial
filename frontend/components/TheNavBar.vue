@@ -85,12 +85,11 @@ const toggleMenu = () => {
 };
 </script>
 <template>
-	<div class="hero-head">
-	  <nav class="navbar">
+	  <nav class="navbar is-flex-direction-row	">
 		<div class="container">
 		  <div class="navbar-brand">
 			<NuxtLink class="navbar-item" to="/">
-			  <img src="@/assets/Oplyst_International_Black_Logo_100x70.png" alt="Logo" class="navbar-logo"/>
+			  <img src="@/assets/Oplyst_International_White_logo_800x600.png" alt="Logo" class="navbar-logo"/>
 			</NuxtLink>
 			<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" @click="toggleMenu">
 			  <span aria-hidden="true"></span>
@@ -123,56 +122,53 @@ const toggleMenu = () => {
 		  </div>
 		</div>
 	  </nav>
-	</div>
   </template>
   
 
-  <style scoped>
-  .navbar {
-	  background-color: #003366; /* Dark blue, common in finance industries for trustworthiness */
-	  border-bottom: 1px solid #e0e0e0; /* A subtle border for separation */
-  }
-.navbar-logo {
-  width: 170%; /* Adjust width as per your requirement */
-  height: 170%; /* Maintain the aspect ratio */
-}
-
-  
-  .navbar-item h2, .navbar-link, .navbar-item {
-	  color: #ffffff; /* White color for the text for contrast against the dark navbar */
-	  font-size: 1.125rem;
-  }
-  
-  .navbar-burger {
-	  color: #ffffff; /* White color for the burger menu */
-  }
-  
-  .navbar-link:hover, .navbar-item:hover {
-	  background-color: #005699; /* Slightly lighter blue for hover effect */
-  }
-  
-  .navbar-item.has-dropdown:hover .navbar-link,
-  .navbar-item.has-dropdown.is-active .navbar-link {
-	  color: #d4a017; /* A touch of gold for active/hovered dropdowns */
-	  background-color: #005699; /* Slightly lighter blue for hover effect */
-  }
-  
-  .navbar-dropdown {
-	  background-color: #004882; /* Even darker shade for the dropdown to distinguish it from the main bar */
-	  border: none; /* Remove any default borders */
-  }
-  
-  .navbar-dropdown .navbar-item:hover {
-	  background-color: #0066aa; /* A bit lighter blue for hover effect in dropdowns */
-  }
-  
-  .v-enter-active,
-  .v-leave-active {
-	  transition: opacity 0.5s ease;
-  }
-  
-  .v-enter-from,
-  .v-leave-to {
-	  opacity: 0;
-  }
+<style scoped>
+	.navbar {
+		border: 2px solid #FF5733;
+		background-color: #003366; /* Dark blue, common in finance industries for trustworthiness */
+		border-bottom: 1px solid #e0e0e0; /* A subtle border for separation */
+	}
+	.navbar-logo {
+		max-height: 10.5rem;
+	}
+	.navbar-item h2, .navbar-link, .navbar-item {
+		color: #ffffff; /* White color for the text for contrast against the dark navbar */
+		font-size: 1.125rem;
+	}
+	
+	.navbar-burger {
+		color: #ffffff; /* White color for the burger menu */
+	}
+	
+	.navbar-link:hover, .navbar-item:hover {
+		background-color: #005699; /* Slightly lighter blue for hover effect */
+	}
+	
+	.navbar-item.has-dropdown:hover .navbar-link,
+	.navbar-item.has-dropdown.is-active .navbar-link {
+		color: #d4a017; /* A touch of gold for active/hovered dropdowns */
+		background-color: #005699; /* Slightly lighter blue for hover effect */
+	}
+	
+	.navbar-dropdown {
+		background-color: #004882; /* Even darker shade for the dropdown to distinguish it from the main bar */
+		border: none; /* Remove any default borders */
+	}
+	
+	.navbar-dropdown .navbar-item:hover {
+		background-color: #0066aa; /* A bit lighter blue for hover effect in dropdowns */
+	}
+	
+	.v-enter-active,
+	.v-leave-active {
+		transition: opacity 0.5s ease;
+	}
+	
+	.v-enter-from,
+	.v-leave-to {
+		opacity: 0;
+	}
   </style>

@@ -50,7 +50,7 @@ const industries = [
   { 
     id: 6, 
     name: 'Logistics', 
-    description: 'For every owner operator out there, we provide financing that keeps you on the road and able to meet demand.', 
+    description: 'Our financing solutions for Owner Operators are designed to keep you on the road and always ready to meet demand.', 
     imageSource: "",
     route:"industries/retail"
   }
@@ -106,166 +106,145 @@ const services = [
 </script>
 
 <template>
-<div class="container is-fluid">
 <div>
-  <!--
-  <Head>
-    <Title>Oplyst International | Innovation, Integrity, Impact</Title>
-    <Link 
-      rel="preconnect" 
-      href="https://fonts.googleapis.com"/>
-    <Link 
-      rel="preconnect" 
-      href="https://fonts.gstatic.com" 
-      crossorigin/>
-    <Link 
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" 
-      rel="stylesheet"> </Link>        
-  </Head> -->
-  <NuxtLayout>
-    <!-- <section class="container is-small">
-      <img 
-        src="@/assets/david-kiriakidis-bP0q3tTTHS4-unsplash.jpg"
-        alt="Oplyst International - Pioneering Commercial Lending Solutions" 
-      /> 
-      <img class="w-full h-auto" 
-      width="1920" 
-      height="1422" 
-      src="@/assets/david-kiriakidis-bP0q3tTTHS4-unsplash.jpg" 
-      alt="Narwin waving while standing in front of a vast horizon of ocean waves and mountains">
-      
-    </section >  -->
-    <section class="hero is-fullwidth has-background-dark">
-      
-      <div class="hero-body">
+  <div>
+    <NuxtLayout>
+
+      <section class="hero is-fullwidth has-background-dark is-flex-direction-row">
+        
+        <div class="hero-body">
 
 
-        <div class="container is-fluid">
-          <NuxtLink class="tag" to="https://www.linkedin.com/company/oplystusa/">@oplyst-international</NuxtLink>
-          <h3 class="title is-3 has-text-white">
-            Elevate Your Ambitions: Direct, Fast, and Tailored Business Financing.
-          </h3>
+          <div class="container is-fluid">
+            <NuxtLink class="tag" to="https://www.linkedin.com/company/oplystusa/">@oplyst-international</NuxtLink>
+            <h3 class="title is-3 has-text-white">
+              Elevate Your Ambitions: Direct, Fast, and Tailored Business Financing.
+            </h3>
+          </div>
         </div>
-      </div>
-    </section>    
+      </section>    
 
-    <section class="section">
-      <div class="container">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <div class="field has-addons">
-              <p class="control">
-                <input class="input" type="text" placeholder="First Name">
-              </p>
-              <p class="control">
-                <input class="input" type="email" placeholder="email@yourcompany.com">
-              </p>
-              <p class="control">
-                <button class="button is-info">Stay Informed</button>
-              </p>
+      <section class="section">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <div class="field has-addons">
+                <p class="control">
+                  <input class="input" type="text" placeholder="First Name">
+                </p>
+                <p class="control">
+                  <input class="input" type="email" placeholder="email@yourcompany.com">
+                </p>
+                <p class="control">
+                  <button class="button is-info">Stay Informed</button>
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!--  <h2 class="statement">
-            Dynamic Lending and Financing for Modern Real Estate and Business Goals.
-        </h2> -->
-    <section class="section">
-    <div class="container">
-      <h2 class="statement has-text-centered">Tailored Business Funding Service with Precision Matching</h2>
-      
-      <div class="columns">
+      </section>
+      <!--  <h2 class="statement">
+              Dynamic Lending and Financing for Modern Real Estate and Business Goals.
+          </h2> -->
+      <section class="section">
+      <div class="container">
+        <h2 class="statement has-text-centered">Tailored Business Funding Service with Precision Matching</h2>
         
-        <div class="column is-one-third">
-          <h3 class="statement-subtitle">Swift and Simple Application Process</h3>
-          <p>
-            Just fill out our brief online form or contact us at [PHONE]. Designed for businesses operational for at least 2 months and boasting a monthly revenue of over $10,000, we ensure your time is well-spent.
-          </p>
-        </div>
+        <div class="columns">
+          
+          <div class="column is-one-third">
+            <h3 class="statement-subtitle">Swift and Simple Application Process</h3>
+            <p>
+              Designed for businesses operational for at least 2 months and boasting a monthly revenue of over $10,000, we ensure your time is well-spent.
+            </p>
+          </div>
 
-        <div class="column is-one-third">
-          <h3 class="statement-subtitle">Expert Loan Underwriting for Your Profile</h3>
-          <p>
-            Our seasoned underwriters meticulously review your application, ensuring you're perfectly matched. Based on your unique profile, we connect you to lenders who are actively seeking businesses with your exact credentials.
-          </p>
-        </div>
+          <div class="column is-one-third">
+            <h3 class="statement-subtitle">Expert Loan Underwriting for Your Profile</h3>
+            <p>
+              Our seasoned underwriters meticulously review your application, ensuring you're perfectly matched. Based on your unique profile, we connect you to lenders who are actively seeking businesses with your exact credentials.
+            </p>
+          </div>
 
-        <div class="column is-one-third">
-          <h3 class="statement-subtitle">Direct Connection to Suitable Lenders</h3>
-          <p>
-            Gone are the days of one-size-fits-all loan offers. We specialize in pairing you with lenders that match your profile, expediting approval processes. With our precision-matching, you could potentially access funds on the very same day of your application.
-          </p>
-        </div>
+          <div class="column is-one-third">
+            <h3 class="statement-subtitle">Direct Connection to Suitable Lenders</h3>
+            <p>
+              Gone are the days of one-size-fits-all loan offers. We specialize in pairing you with lenders that match your profile, expediting approval processes. With our precision-matching, you could potentially access funds on the very same day of your application.
+            </p>
+          </div>
 
+        </div>
       </div>
-    </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <h2 class="has-text-centered is-size-1 statement">How we help</h2>
-        <div class="columns is-multiline">
-          <div class="column is-one-third has-text-centered" v-for="service in services" :key="service.id">
-            <NuxtLink :to="service.route">
-              <Card :id="service.id.toString()" :name="service.name" :description="service.description" :imageSource="service.imageSource" />
-            </NuxtLink>
+      </section>
+      <section class="section">
+        <div class="container">
+          <h2 class="has-text-centered is-size-1 statement">How we help</h2>
+          <div class="columns is-multiline">
+            <div class="column is-one-third has-text-centered" v-for="service in services" :key="service.id">
+              <NuxtLink :to="service.route">
+                <Card :id="service.id.toString()" :name="service.name" :description="service.description" :imageSource="service.imageSource" />
+              </NuxtLink>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <h2 class="statement has-text-centered is-size-1">Industries We Serve</h2>
-        <div class="columns is-multiline">
-          <div class="column is-one-third" v-for="industry in industries" :key="industry.id">
-            <NuxtLink :to="industry.route">
-            <Card :id="industry.id.toString()" :name="industry.name" :description="industry.description" :imageSource="industry.imageSource" />
-            </NuxtLink>
+      <section class="section">
+        <div class="container">
+          <h2 class="statement has-text-centered is-size-1">Industries We Serve</h2>
+          <div class="columns is-multiline">
+            <div class="column is-one-third" v-for="industry in industries" :key="industry.id">
+              <NuxtLink :to="industry.route">
+              <Card :id="industry.id.toString()" :name="industry.name" :description="industry.description" :imageSource="industry.imageSource" />
+              </NuxtLink>
+            </div>
           </div>
         </div>
-      </div>
-    </section>  
-    <span class="mb-2 pb-2"/>
+      </section>  
+      <span class="mb-2 pb-2"/>
 
-    <nuxt-img 
-          src="@/assets//austin-distel-7KsyY-Ed7B8-unsplash.jpg"
-          alt="About Oplyst International" 
-          class="about-image"
-        />
-    <section class="section is-medium is-mobile has-text-centered">
-      <h1 class="statement">Our Values</h1>
-      <ul>
-        <li class="statement-subtitle">Innovation</li>
-        <li class="statement-subtitle">Simplicity</li>
-        <li class="statement-subtitle">Excellence</li>
-        <li class="statement-subtitle">Privacy</li>
-        <li class="statement-subtitle">Client Service</li>
-        <li class="statement-subtitle">Integrity</li>
-        <li class="statement-subtitle">Teamwork</li>
-      </ul>
-    </section>
+      <nuxt-img 
+            src="@/assets//austin-distel-7KsyY-Ed7B8-unsplash.jpg"
+            alt="About Oplyst International" 
+            class="about-image"
+          />
+      <section class="section is-medium is-mobile has-text-centered">
+        <h1 class="statement">Our Values</h1>
+        <ul>
+          <li class="statement-subtitle">Innovation</li>
+          <li class="statement-subtitle">Simplicity</li>
+          <li class="statement-subtitle">Excellence</li>
+          <li class="statement-subtitle">Privacy</li>
+          <li class="statement-subtitle">Client Service</li>
+          <li class="statement-subtitle">Integrity</li>
+          <li class="statement-subtitle">Teamwork</li>
+        </ul>
+      </section>
 
 
-    <section class="section is-medium is-flex-mobile">
-      <div class="has-text-centered py-3">
-        <button class="button is-large is-responsive">
-            Schedule a Discovery Call
-        </button>
-      </div>
-      <div class="content is-large">
+      <section class="section is-medium is-flex-mobile">
+        <div class="has-text-centered py-3">
+          <button class="button is-large is-responsive">
+              Schedule a Discovery Call
+          </button>
+        </div>
+        <div class="content is-large">
 
-        <center> <h3>Oplyst International </h3> </center>
-        <p>At Oplyst International, we are innovators, disruptors, and pioneers. Our unique combination of technology, logistics, and financial advisory allows us to provide holistic solutions to complex challenges. We do business with integrity, fostering long-term partnerships based on mutual trust and respect.</p>
-        <p>With a firm commitment to simplicity, quality, and service, we prioritize client satisfaction and champion a future where businesses thrive. Oplyst International is more than just a company - we are shaping the future. Schedule a chat with us today to learn more about our vision, mission, and the services we offer.</p>  
-      </div>
+          <center> <h3>Oplyst International </h3> </center>
+          <p>At Oplyst International, we are innovators, disruptors, and pioneers. Our unique combination of technology, logistics, and financial advisory allows us to provide holistic solutions to complex challenges. We do business with integrity, fostering long-term partnerships based on mutual trust and respect.</p>
+          <p>With a firm commitment to simplicity, quality, and service, we prioritize client satisfaction and champion a future where businesses thrive. Oplyst International is more than just a company - we are shaping the future. Schedule a chat with us today to learn more about our vision, mission, and the services we offer.</p>  
+        </div>
 
-    </section>
-  </NuxtLayout>
-</div>
+      </section>
+    </NuxtLayout>
+  </div>
 </div>
 </template>
 <style lang="scss" scoped>
+
+.container{
+  border: 2px solid #0008ff;
+}
 body {
   font-family: 'Goldman Sans', sans-serif;
   font-weight: 400; // Using the regular weight for body text
