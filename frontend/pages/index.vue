@@ -154,7 +154,7 @@ const services = [
               >
                 @oplyst-international
               </NuxtLink>
-              <h3 class="title is-3 has-text-white">
+              <h3 class="text-white text-2xl md:text-4xl lg:text-6xl font-bold">
                 Elevate Your Ambitions: Direct, Fast, and Tailored Business Financing.
               </h3>
             </div>
@@ -166,16 +166,16 @@ const services = [
             <div class="columns is-centered">
               <div class="column has-text-centered">
                 <div class="field has-addons">
-                  <p class="control">
+                  <div class="control">
                     <input class="input" type="text" placeholder="First Name" />
-                  </p>
-                  <p class="control">
+                  </div>
+                  <div class="control">
                     <input
                       class="input"
                       type="email"
                       placeholder="email@yourcompany.com"
                     />
-                  </p>
+                  </div>
                   <p class="control">
                     <button class="button is-info">Stay Informed</button>
                   </p>

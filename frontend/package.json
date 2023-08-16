@@ -12,6 +12,7 @@
     "@nuxt/content": "^2.4.3",
     "@nuxt/image": "^1.0.0-rc.1",
     "@nuxt/image-edge": "^1.0.0-27954023.4cee565",
+    "@nuxtjs/tailwindcss": "^6.8.0",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
     "@vue/eslint-config-standard": "^8.0.1",
@@ -32,6 +33,7 @@
     "@pinia/nuxt": "^0.4.7",
     "bulma": "^0.9.4",
     "pinia": "^2.0.32",
+    "postcss-custom-properties": "^13.3.0",
     "prettier": "^2.8.4",
     "vuex": "^4.1.0"
   }
