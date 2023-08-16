@@ -130,7 +130,6 @@ const toggleMenu = () => {
   <style scoped>
   .navbar {
 	  background-color: #003366; /* Dark blue, common in finance industries for trustworthiness */
-	  border-bottom: 1px solid #e0e0e0; /* A subtle border for separation */
   }
 .navbar-logo {
   width: 170%; /* Adjust width as per your requirement */
