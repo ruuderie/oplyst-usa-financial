@@ -86,16 +86,11 @@ const toggleMenu = () => {
 </script>
 <template>
   <div class="hero-head">
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
+    <nav class="navbar h-full flex items-center w-full">
+      <div class="container h-fit lg:h-auto">
+        <div class="navbar-brand mr-2 ml-2">
           <NuxtLink class="navbar-item" to="/">
-            <img
-              src="@/assets/Oplyst_International_Black_Logo_100x70.png"
-              alt="Logo"
-              class="navbar-logo"
-              style="filter: invert(100%)"
-            />
+            <img class="w-auto h-12 scale-150" src="/images/logo.svg" />
           </NuxtLink>
           <a
             role="button"
@@ -110,31 +105,62 @@ const toggleMenu = () => {
           </a>
         </div>
 
-        <div id="navbarStandard" class="navbar-menu" :class="{ 'is-active': isActive }">
-          <div class="navbar-end">
-            <div
-              v-for="menu in options"
-              :key="menu.label"
-              class="navbar-item"
-              :class="{
-                'has-dropdown is-hoverable': menu.children && menu.children.length > 0,
-              }"
+        <div class="grow" />
+
+        <div
+          :class="[
+            isActive ? 'fixed top-0 right-0 bottom-0 left-0 overflow-y-auto' : 'relative',
+            'h-full',
+          ]"
+          :style="{ 'z-index': isActive ? 1000 : 10 }"
+        >
+          <div
+            v-if="isActive"
+            class="flex items-center justify-end bg-[#1C477E] h-auto px-3"
+          >
+            <button
+              class="hover:bg-transparent bg-transparent"
+              @click="() => (isActive = false)"
             >
-              <NuxtLink class="navbar-link" :to="'/' + menu.name.toLowerCase()">
-                {{ menu.label }}
-              </NuxtLink>
-              <div
-                v-if="menu.children && menu.children.length > 0"
-                class="navbar-dropdown"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
               >
-                <NuxtLink
-                  v-for="child in menu.children"
-                  :key="child.label"
-                  :to="'/' + menu.name.toLowerCase() + '/' + child.name.toLowerCase()"
-                  class="navbar-item"
-                >
-                  {{ child.label }}
+                <path
+                  fill="currentColor"
+                  d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div id="navbarStandard" class="navbar-menu" :class="{ 'is-active': isActive }">
+            <div class="navbar-end">
+              <div
+                v-for="menu in options"
+                :key="menu.label"
+                class="navbar-item"
+                :class="{
+                  'has-dropdown is-hoverable': menu.children && menu.children.length > 0,
+                }"
+              >
+                <NuxtLink class="navbar-link" :to="'/' + menu.name.toLowerCase()">
+                  {{ menu.label }}
                 </NuxtLink>
+                <div
+                  v-if="menu.children && menu.children.length > 0"
+                  class="navbar-dropdown"
+                >
+                  <NuxtLink
+                    v-for="child in menu.children"
+                    :key="child.label"
+                    :to="'/' + menu.name.toLowerCase() + '/' + child.name.toLowerCase()"
+                    class="navbar-item"
+                  >
+                    {{ child.label }}
+                  </NuxtLink>
+                </div>
               </div>
             </div>
           </div>
@@ -149,8 +175,8 @@ const toggleMenu = () => {
   background-color: #003366; /* Dark blue, common in finance industries for trustworthiness */
 }
 .navbar-logo {
-  width: 170%; /* Adjust width as per your requirement */
-  height: 170%; /* Maintain the aspect ratio */
+  /*  width: 280%; /* Adjust width as per your requirement */
+  /* height: 280%; /* Maintain the aspect ratio */
 }
 
 .navbar-item h2,
