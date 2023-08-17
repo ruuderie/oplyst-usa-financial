@@ -85,93 +85,56 @@ const toggleMenu = () => {
 };
 </script>
 <template>
-  <div class="h-24">
-    <div class="flex items-center gap-3 h-full w-full">
-      <NuxtLink to="/">
-        <img
-          class="w-auto h-24"
-          src="/images/Oplyst_International_White_logo_800x600.png"
-        />
-      </NuxtLink>
-
-      <div class="grow" />
-      <div
-        v-for="menu in options"
-        :key="menu.label"
-        class="navbar-item"
-        :class="{
-          'has-dropdown is-hoverable': menu.children && menu.children.length > 0,
-        }"
-      >
-        <NuxtLink class="navbar-link" :to="'/' + menu.name.toLowerCase()">
-          {{ menu.label }}
-        </NuxtLink>
-        <div v-if="menu.children && menu.children.length > 0" class="navbar-dropdown">
-          <NuxtLink
-            v-for="child in menu.children"
-            :key="child.label"
-            :to="'/' + menu.name.toLowerCase() + '/' + child.name.toLowerCase()"
-            class="navbar-item"
-          >
-            {{ child.label }}
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <NuxtLink class="navbar-item" to="/">
+            <img
+              src="@/assets/Oplyst_International_Black_Logo_100x70.png"
+              alt="Logo"
+              class="navbar-logo"
+              style="filter: invert(100%)"
+            />
           </NuxtLink>
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            @click="toggleMenu"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-      </div>
-    </div>
-    <nav v-if="false" class="hidden navbar h-24">
-      <div class="bg-black flex items-center">
-        <div class="container">
-          <div class="navbar-brand">
-            <NuxtLink class="navbar-item" t o="/">
-              <div class="relative w-16 h-16">
-                <div
-                  class="absolute -top-3 -right-10 bottom-0 -left-5 bg-no-repeat bg-cover"
-                  style="
-                    background-image: url(/images/Oplyst_International_White_logo_800x600.png);
-                  "
-                />
-              </div>
-            </NuxtLink>
-            <div>hell</div>
-            <!-- <button
-              role="button"
-              class="navbar-burger bg-yellow-100"
-              aria-label="menu"
-              aria-expanded="false"
-              @click="toggleMenu"
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </button> -->
-          </div>
 
-          <div id="navbarStandard" class="navbar-menu" :class="{ 'is-active': isActive }">
-            <div class="navbar-end">
+        <div id="navbarStandard" class="navbar-menu" :class="{ 'is-active': isActive }">
+          <div class="navbar-end">
+            <div
+              v-for="menu in options"
+              :key="menu.label"
+              class="navbar-item"
+              :class="{
+                'has-dropdown is-hoverable': menu.children && menu.children.length > 0,
+              }"
+            >
+              <NuxtLink class="navbar-link" :to="'/' + menu.name.toLowerCase()">
+                {{ menu.label }}
+              </NuxtLink>
               <div
-                v-for="menu in options"
-                :key="menu.label"
-                class="navbar-item"
-                :class="{
-                  'has-dropdown is-hoverable': menu.children && menu.children.length > 0,
-                }"
+                v-if="menu.children && menu.children.length > 0"
+                class="navbar-dropdown"
               >
-                <NuxtLink class="navbar-link" :to="'/' + menu.name.toLowerCase()">
-                  {{ menu.label }}
-                </NuxtLink>
-                <div
-                  v-if="menu.children && menu.children.length > 0"
-                  class="navbar-dropdown"
+                <NuxtLink
+                  v-for="child in menu.children"
+                  :key="child.label"
+                  :to="'/' + menu.name.toLowerCase() + '/' + child.name.toLowerCase()"
+                  class="navbar-item"
                 >
-                  <NuxtLink
-                    v-for="child in menu.children"
-                    :key="child.label"
-                    :to="'/' + menu.name.toLowerCase() + '/' + child.name.toLowerCase()"
-                    class="navbar-item"
-                  >
-                    {{ child.label }}
-                  </NuxtLink>
-                </div>
+                  {{ child.label }}
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -186,8 +149,8 @@ const toggleMenu = () => {
   background-color: #003366; /* Dark blue, common in finance industries for trustworthiness */
 }
 .navbar-logo {
-  /* width: 200%; /* Adjust width as per your requirement */
-  /* height: 200%; /* Maintain the aspect ratio */
+  width: 170%; /* Adjust width as per your requirement */
+  height: 170%; /* Maintain the aspect ratio */
 }
 
 .navbar-item h2,
