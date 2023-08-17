@@ -3,7 +3,7 @@
     <TheNavBar class="page-container__navbar navbar container is-fluid" />
 
     <main class="page-container__content section" style="padding: 0">
-      <div class="content-wrapper">
+      <div class="content-wrapper min-h-screen">
         <slot />
       </div>
     </main>
