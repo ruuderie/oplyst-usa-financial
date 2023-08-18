@@ -99,7 +99,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener("resize");
+  // window.removeEventListener("resize");
 });
 </script>
 <template>
