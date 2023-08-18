@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
+
 const options = [
   {
     label: "Our Company",
@@ -69,8 +70,13 @@ options.forEach((option) => {
   });
 });
 
+const windowWidth = ref(0);
 const activeSubmenu = ref("");
 const isActive = ref(false);
+
+const showMobileNav = computed(() => {
+  return windowWidth.value < 1024 && isActive.value;
+});
 
 const toggleSubmenu = (menuName) => {
   console.log("menuName", menuName);
@@ -83,6 +89,18 @@ const toggleMenu = () => {
   isActive.value = !isActive.value;
   console.log("isActive.value : ", isActive.value);
 };
+
+onMounted(() => {
+  windowWidth.value = window.innerWidth;
+
+  window.addEventListener("resize", () => {
+    windowWidth.value = window.innerWidth;
+  });
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize");
+});
 </script>
 <template>
   <div class="hero-head">
@@ -109,15 +127,21 @@ const toggleMenu = () => {
 
         <div
           :class="[
-            isActive ? 'fixed top-0 right-0 bottom-0 left-0 overflow-y-auto' : 'relative',
+            showMobileNav
+              ? 'fixed top-0 right-0 bottom-0 left-0 overflow-y-auto'
+              : 'relative',
             'h-full',
           ]"
           :style="{ 'z-index': isActive ? 1000 : 10 }"
         >
           <div
-            v-if="isActive"
-            class="flex items-center justify-end bg-[#1C477E] h-auto px-3"
+            v-if="showMobileNav"
+            class="flex items-center justify-start bg-[#1C477E] h-24 px-[40px]"
           >
+            <NuxtLink class="navbar-item" to="/">
+              <img class="w-auto h-8 scale-150" src="/images/logo.svg" />
+            </NuxtLink>
+            <div class="grow" />
             <button
               class="hover:bg-transparent bg-transparent"
               @click="() => (isActive = false)"
@@ -135,7 +159,11 @@ const toggleMenu = () => {
               </svg>
             </button>
           </div>
-          <div id="navbarStandard" class="navbar-menu" :class="{ 'is-active': isActive }">
+          <div
+            id="navbarStandard"
+            class="navbar-menu h-full"
+            :class="{ 'is-active': showMobileNav }"
+          >
             <div class="navbar-end">
               <div
                 v-for="menu in options"
@@ -193,6 +221,11 @@ const toggleMenu = () => {
 .navbar-link:hover,
 .navbar-item:hover {
   background-color: #005699; /* Slightly lighter blue for hover effect */
+}
+
+.navbar-item.has-dropdown {
+  background-color: #123262;
+  margin-top: -8px;
 }
 
 .navbar-item.has-dropdown:hover .navbar-link,
