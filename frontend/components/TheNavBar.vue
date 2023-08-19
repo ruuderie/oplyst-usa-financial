@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
       <div class="container h-fit lg:h-auto">
         <div class="navbar-brand mr-2 ml-2">
           <NuxtLink class="navbar-item" to="/">
-            <img class="w-auto h-12 scale-150" src="/images/logo.svg" />
+            <img class="w-auto h-24 scale-[2.2]" src="/images/logo.svg" />
           </NuxtLink>
           <a
             role="button"
@@ -139,7 +139,7 @@ onBeforeUnmount(() => {
             class="flex items-center justify-start bg-[#1C477E] h-24 px-[40px]"
           >
             <NuxtLink class="navbar-item" to="/">
-              <img class="w-auto h-8 scale-150" src="/images/logo.svg" />
+              <img class="w-auto h-8 scale-[2.2]" src="/images/logo.svg" />
             </NuxtLink>
             <div class="grow" />
             <button
