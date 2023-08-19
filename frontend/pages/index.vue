@@ -161,7 +161,7 @@ const services = [
           </div>
         </section>
 
-        <section class="section">
+        <!-- <section class="section">
           <div class="container">
             <div class="columns is-centered">
               <div class="column has-text-centered">
@@ -180,6 +180,32 @@ const services = [
                     <button class="button is-info">Stay Informed</button>
                   </p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section> -->
+
+        <section class="section">
+          <div class="w-full max-w-screen-lg block mx-auto">
+            <div class="grid grid-cols-12 gap-3">
+              <div class="col-span-12 md:col-span-4">
+                <input
+                  class="input is-medium !border-2 !border-gray-200 hover:!border-[#123262]"
+                  type="text"
+                  placeholder="Full Name"
+                />
+              </div>
+              <div class="col-span-12 md:col-span-4">
+                <input
+                  class="input is-medium !border-2 !border-gray-200 hover:!border-[#123262]"
+                  type="email"
+                  placeholder="email@yourcompany.com"
+                />
+              </div>
+              <div class="col-span-12 md:col-span-4">
+                <button class="button is-info is-medium is-fullwidth">
+                  Stay Informed
+                </button>
               </div>
             </div>
           </div>

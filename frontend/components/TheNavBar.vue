@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
       <div class="container h-fit lg:h-auto">
         <div class="navbar-brand mr-2 ml-2">
           <NuxtLink class="navbar-item" to="/">
-            <img class="w-auto h-24 scale-[2.2]" src="/images/logo.svg" />
+            <img class="w-auto h-24 scale-[2.8]" src="/images/logo.svg" />
           </NuxtLink>
           <a
             role="button"
