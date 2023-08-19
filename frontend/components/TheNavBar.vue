@@ -139,7 +139,7 @@ onBeforeUnmount(() => {
             class="flex items-center justify-start bg-[#1C477E] h-24 px-[40px]"
           >
             <NuxtLink class="navbar-item" to="/">
-              <img class="w-auto h-8 scale-[2.2]" src="/images/logo.svg" />
+              <img class="w-auto h-24 scale-[2.8]" src="/images/logo.svg" />
             </NuxtLink>
             <div class="grow" />
             <button
