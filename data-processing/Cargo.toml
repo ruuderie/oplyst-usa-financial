@@ -6,4 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-polars = { version = "0.26.1", features = ["dtype-date", "dtype-datetime","rows", "strings","serde", "string_justify", "json", "parquet", "decompress", "sort_multiple", "dataframe_arithmetic", "performant"] }
+polars = { version = "0.26.1", features = ["dtype-date", "dtype-datetime","rows", "strings","serde", "string_justify", "json", "parquet", "decompress", "sort_multiple", "dataframe_arithmetic", "performant","json"] }
+scraper = "0.12.0"
+

@@ -27,7 +27,7 @@ async fn quick_dev() -> Result<(), anyhow::Error> {
         })
     );
 
-    req_login.await?.print().await?;
+    //req_login.await?.print().await?;
     
     let create_ticket = hc.do_post(
         "/api/tickets",

@@ -21,22 +21,24 @@ pub fn routes(mc: ModelController) -> Router {
 
 async fn create_ticket(
     State(model): State<ModelController>,
+    ctz: Ctx,
     Json(ticket_fc): Json<TicketForCreate>,
 ) -> Result<Json<Ticket>> {
     println!("-->> {:<12} - create_ticket", "HANDLER");
-    let ticket = model.create_ticket(ticket_fc).await?;
+    let ticket = model.create_ticket(ctx,ticket_fc).await?;
     Ok(Json(ticket))
 }
-async fn list_tickets(State(model): State<ModelController>) -> Result<Json<Vec<Ticket>>> {
+async fn list_tickets(State(model): State<ModelController>,ctx: Ctx) -> Result<Json<Vec<Ticket>>> {
     println!("-->> {:<12} - list_tickets", "HANDLER");
-    let tickets = model.list_tickets().await?;
+    let tickets = model.list_tickets(ctx).await?;
     Ok(Json(tickets))
 }
 async fn delete_ticket(
     State(model): State<ModelController>,
+    ctx: Ctx,
     Path(id): Path<u32>,
 ) -> Result<Json<Ticket>> {
     println!("-->> {:<12} - delete_ticket", "HANDLER");
-    let ticket = model.delete_ticket(id).await?;
+    let ticket = model.delete_ticket(ctx,id).await?;
     Ok(Json(ticket))
 }
