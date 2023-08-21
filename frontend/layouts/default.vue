@@ -1,9 +1,9 @@
 <template>
   <div class="page-container">
-    <TheNavBar class="page-container__navbar navbar container is-fluid" />
+    <TheNavBar class="page-container__navbar navbar container is-fluid h-28" />
 
     <main class="page-container__content section" style="padding: 0">
-      <div class="content-wrapper">
+      <div class="content-wrapper min-h-[100vh]">
         <slot />
       </div>
     </main>
