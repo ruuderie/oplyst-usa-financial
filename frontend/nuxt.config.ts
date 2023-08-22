@@ -45,7 +45,7 @@ export default defineNuxtConfig({
 				script: [{ src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js', async: true, defer: true }],
 			},
 		},
-		modules: ['@nuxt/image-edge', '@pinia/nuxt', 'nuxt-icon', '@nuxt/image'],
+		modules: ['@nuxt/image-edge', '@pinia/nuxt', 'nuxt-icons', '@nuxt/image'],
 		pinia: {
 			autoImports: [
 				['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'

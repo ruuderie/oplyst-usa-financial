@@ -155,7 +155,7 @@ const services = [
                 @oplyst-international
               </NuxtLink>
               <h3 class="text-white text-2xl md:text-4xl lg:text-6xl font-bold">
-                Elevate Your Ambitions: Direct, Fast, and Tailored Business Financing.
+                Elevate Your Ambitions with Direct, Fast, and Custom Business Financing.
               </h3>
             </div>
           </div>
@@ -367,7 +367,7 @@ body {
   position: relative;
   background-color: #000000;
   // background-image: url("@/assets/salym.eth_Image_of_a_vintage_ship_with_billowing_sails_navigati_3e5a3024-b213-47d3-b9b1-6a5f4fe59c55.png");
-  background-image: url("@/assets/salym.eth_Image_of_a_vintage_ship_with_billowing_sails_navigati_.svg");
+  background-image: url("@/assets/declan_sun_j4ED0mgXp2c_unsplash.jpg");
   background-size: cover; // changed to cover so it fills the container
   background-repeat: no-repeat;
   background-position: center;

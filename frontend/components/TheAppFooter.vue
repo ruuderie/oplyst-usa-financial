@@ -44,7 +44,12 @@ const currentYear = computed(() => {
           <div class="column is-3">
             <h5>Follow Us</h5>
             <div>
-              <!-- Add Social Media Icons Here -->
+              <!-- nuxt link to linkedin url -->
+              <NuxtLink href="https://www.linkedin.com/company/oplystusa" target="_blank">
+                
+              </NuxtLink>
+              <nuxt-icon name="social/linkedin"/> 
+
             </div>
           </div>
 
