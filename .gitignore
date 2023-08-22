@@ -21,6 +21,7 @@ dist
 # CSV and PDF files
 *.csv
 *.pdf
+data-processing/data
 
 # Logs
 *.log*
