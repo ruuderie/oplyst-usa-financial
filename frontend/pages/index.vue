@@ -37,14 +37,6 @@ const industries = [
     route: "industries/healthcare",
   },
   {
-    id: 4,
-    name: "Cannabis",
-    description:
-      "We have the right financial tools to help the future of the cannabis tech industry grow.",
-    imageSource: "",
-    route: "industries/cannabis",
-  },
-  {
     id: 5,
     name: "Manufacturing",
     description:
@@ -117,32 +109,6 @@ const services = [
   <NuxtLayout>
     <div class="">
       <div>
-        <!--
-          <Head>
-            <Title>Oplyst International | Innovation, Integrity, Impact</Title>
-            <Link 
-              rel="preconnect" 
-              href="https://fonts.googleapis.com"/>
-            <Link 
-              rel="preconnect" 
-              href="https://fonts.gstatic.com" 
-              crossorigin/>
-            <Link 
-              href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" 
-              rel="stylesheet"> </Link>        
-          </Head> -->
-        <!-- <section class="container is-small">
-                <img 
-                  src="@/assets/david-kiriakidis-bP0q3tTTHS4-unsplash.jpg"
-                  alt="Oplyst International - Pioneering Commercial Lending Solutions" 
-                /> 
-                <img class="w-full h-auto" 
-                width="1920" 
-                height="1422" 
-                src="@/assets/david-kiriakidis-bP0q3tTTHS4-unsplash.jpg" 
-                alt="Narwin waving while standing in front of a vast horizon of ocean waves and mountains">
-                
-              </section >  -->
         <section class="hero is-fullwidth has-background-dark">
           <div class="overlay" />
           <div class="hero-body">
@@ -161,29 +127,6 @@ const services = [
           </div>
         </section>
 
-        <!-- <section class="section">
-          <div class="container">
-            <div class="columns is-centered">
-              <div class="column has-text-centered">
-                <div class="field has-addons">
-                  <div class="control">
-                    <input class="input" type="text" placeholder="First Name" />
-                  </div>
-                  <div class="control">
-                    <input
-                      class="input"
-                      type="email"
-                      placeholder="email@yourcompany.com"
-                    />
-                  </div>
-                  <p class="control">
-                    <button class="button is-info">Stay Informed</button>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> -->
 
         <section class="section">
           <div class="w-full max-w-screen-lg block mx-auto">
@@ -223,8 +166,8 @@ const services = [
               <div class="column is-one-third">
                 <h3 class="statement-subtitle">Swift and Simple Application Process</h3>
                 <p>
-                  Just fill out our brief online form or contact us at [PHONE]. Designed
-                  for businesses operational for at least 2 months and boasting a monthly
+                  Simply contact us at <a href="tel:860-333-6524" > (860)-333-6524 </a> or via email at <a href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a>. 
+                  Designed for businesses operational for at least 2 months and boasting a monthly
                   revenue of over $10,000, we ensure your time is well-spent.
                 </p>
               </div>
