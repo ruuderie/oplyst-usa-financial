@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
   <div class="hero-head">
     <nav class="navbar h-full flex items-center w-full">
       <div class="container h-fit lg:h-auto">
-        <div class="navbar-brand mr-2 ml-2">
+        <div v-show="!showMobileNav" class="navbar-brand mr-2 ml-2">
           <NuxtLink class="navbar-item" to="/">
             <img class="w-auto h-24 scale-[2.8]" src="/images/logo.svg" />
           </NuxtLink>
@@ -138,7 +138,7 @@ onBeforeUnmount(() => {
         >
           <div
             v-if="showMobileNav"
-            class="flex items-center justify-start bg-[#1C477E] h-24 px-[40px]"
+            class="z-20 flex items-center justify-start bg-[#123262] h-[112px] px-[40px]"
           >
             <NuxtLink class="navbar-item" to="/">
               <img class="w-auto h-24 scale-[2.8]" src="/images/logo.svg" />
@@ -161,9 +161,10 @@ onBeforeUnmount(() => {
               </svg>
             </button>
           </div>
+
           <div
             id="navbarStandard"
-            class="navbar-menu h-full"
+            class="navbar-menu h-full !bg-transparent"
             :class="{ 'is-active': showMobileNav }"
           >
             <div class="navbar-end">
@@ -175,11 +176,23 @@ onBeforeUnmount(() => {
                   'has-dropdown is-hoverable': menu.children && menu.children.length > 0,
                 }"
               >
-                <NuxtLink class="navbar-link" :to="'/' + menu.name.toLowerCase()">
+                <NuxtLink
+                  event=""
+                  class="navbar-link"
+                  :to="showMobileNav ? '' : '/' + menu.name.toLowerCase()"
+                  @click="
+                    () =>
+                      showMobileNav ? (misc[menu.label] = !misc[menu.label]) : () => {}
+                  "
+                >
                   {{ menu.label }}
                 </NuxtLink>
                 <div
-                  v-if="misc[menu.label] && menu.children && menu.children.length > 0"
+                  v-if="
+                    (showMobileNav ? !misc[menu.label] : true) &&
+                    menu.children &&
+                    menu.children.length > 0
+                  "
                   class="navbar-dropdown right-0 !-left-48"
                 >
                   <NuxtLink
