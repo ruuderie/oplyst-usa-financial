@@ -166,36 +166,38 @@ pub fn transform_csv_with_stacked_addresses(input_path: &Path, output_path: &Pat
     let mut rdr = csv::Reader::from_reader(File::open(input_path)?);
     let mut wtr = csv::Writer::from_writer(File::create(output_path)?);
 
-    // Write headers to the new CSV
     wtr.write_record(&["#", "Name and Trade Name of Firm", "Contact", "Address", "City", "State", "Zip", "Capabilities Narrative", "EMAIL"])?;
+
+    let re = Regex::new(r"^(.*?), ([^,]+),? ([A-Z]{2}) (\d+)?$").unwrap();
 
     for result in rdr.records() {
         let record = result?;
-        let address = &record[3];
+        let mut address = String::from(&record[3]);
 
-        // Use regex to split address into "Address", "City", "State" and "Zip"
-        let re = Regex::new(r"^(.*), ([^,]+), ([A-Z]{2}) (\d+)$").unwrap();
-        let caps = re.captures(address).unwrap_or_else(|| {
-            panic!("Failed to parse address: {}", address);
-        });
+        // Check if the next column could be a continuation of the address
+        if !re.is_match(&address) && record.len() > 4 && !Regex::new(r"^[A-Z]{2} \d+$").unwrap().is_match(&record[4]) {
+            address.push_str(&format!(", {}", &record[4]));
+        }
 
-        // Write to new CSV
-        wtr.write_record(&[
-            &record[0], 
-            &record[1], 
-            &record[2], 
-            caps.get(1).map_or("", |m| m.as_str()),
-            caps.get(2).map_or("", |m| m.as_str()),
-            caps.get(3).map_or("", |m| m.as_str()),
-            caps.get(4).map_or("", |m| m.as_str()),
-            &record[4], 
-            &record[5]
-        ])?;
+        if let Some(caps) = re.captures(&address) {
+            wtr.write_record(&[
+                &record[0], 
+                &record[1], 
+                &record[2], 
+                caps.get(1).map_or("", |m| m.as_str()),
+                caps.get(2).map_or("", |m| m.as_str()),
+                caps.get(3).map_or("", |m| m.as_str()),
+                caps.get(4).map_or("", |m| m.as_str()),
+                &record[record.len() - 2], 
+                &record[record.len() - 1]
+            ])?;
+        } else {
+            eprintln!("Failed to parse address: {}", address);
+        }
     }
 
     wtr.flush()?;
 
     Ok(())
 }
-
 
