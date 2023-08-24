@@ -23,7 +23,8 @@
                 </ul>
                 <p class="call-to-action">
                     Take the leap into a partnership that values your contribution and dedication! Dial 
-                    <span class="phone-number">475-470-0167</span> to chat with our Commercial Finance Consultants.
+                    <a href="tel:860-333-6524" > (860)-333-6524 </a> or email
+                    <a href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a> to chat with our Commercial Finance Consultants.
                 </p>
             </section>
         </NuxtLayout>
