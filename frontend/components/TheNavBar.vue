@@ -204,6 +204,11 @@ onBeforeUnmount(() => {
                     {{ child.label }}
                   </NuxtLink>
                 </div>
+                <div class="apply-now-button-wrapper">
+                  <a href="https://www.nationalbusinesscapital.com/apply-now/?ref=2762241" target="_blank" class="apply-now-button">
+                    Urgent? Apply Now for Pre-Approval
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -267,4 +272,23 @@ onBeforeUnmount(() => {
 .v-leave-to {
   opacity: 0;
 }
+.apply-now-button-wrapper {
+  margin-left: auto; /* Push it to the right */
+  padding: 0 20px; /* Add some padding */
+}
+
+.apply-now-button {
+  background-color: #d4a017; /* Gold color to make it stand out */
+  color: #003366; /* Dark blue text for contrast */
+  padding: 10px 20px; /* Padding for the button */
+  border-radius: 5px; /* Rounded corners */
+  transition: transform 0.3s ease; /* Transition for the hover animation */
+}
+
+.apply-now-button:hover {
+  background-color: #b89015; /* Slightly darker shade of gold for hover */
+  transform: scale(1.05); /* Slightly increase size when hovered */
+  text-decoration: none; /* Remove underlines from link on hover */
+}
+
 </style>
