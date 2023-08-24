@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import Card from "@/components/Card.vue";
+import gql from 'graphql-tag'
 
 // Define a reactive variable for the asset path
 const logoSrc = ref("@/assets/Oplyst_International_White_logo_800x600.png");
@@ -111,38 +112,35 @@ const services = [
     route: "industries/healthcare",
   },
 ];
+
+const servicesQuery = gql` {
+    serviceCollection {
+      items {
+        serviceName
+        serviceDescription {
+          json
+        }
+        pageTitle
+        pageSubtitle
+        heroImage {
+          title
+          url
+        }
+        callToAction
+        lendingLimits
+      }
+    }
+  }
+  `
+const { data } = await useAsyncQuery(servicesQuery);
+
 </script>
 
 <template>
   <NuxtLayout>
     <div class="">
+      <ore>{{ data }}</ore>
       <div>
-        <!--
-          <Head>
-            <Title>Oplyst International | Innovation, Integrity, Impact</Title>
-            <Link 
-              rel="preconnect" 
-              href="https://fonts.googleapis.com"/>
-            <Link 
-              rel="preconnect" 
-              href="https://fonts.gstatic.com" 
-              crossorigin/>
-            <Link 
-              href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" 
-              rel="stylesheet"> </Link>        
-          </Head> -->
-        <!-- <section class="container is-small">
-                <img 
-                  src="@/assets/david-kiriakidis-bP0q3tTTHS4-unsplash.jpg"
-                  alt="Oplyst International - Pioneering Commercial Lending Solutions" 
-                /> 
-                <img class="w-full h-auto" 
-                width="1920" 
-                height="1422" 
-                src="@/assets/david-kiriakidis-bP0q3tTTHS4-unsplash.jpg" 
-                alt="Narwin waving while standing in front of a vast horizon of ocean waves and mountains">
-                
-              </section >  -->
         <section class="hero is-fullwidth has-background-dark">
           <div class="overlay" />
           <div class="hero-body">
@@ -160,30 +158,6 @@ const services = [
             </div>
           </div>
         </section>
-
-        <!-- <section class="section">
-          <div class="container">
-            <div class="columns is-centered">
-              <div class="column has-text-centered">
-                <div class="field has-addons">
-                  <div class="control">
-                    <input class="input" type="text" placeholder="First Name" />
-                  </div>
-                  <div class="control">
-                    <input
-                      class="input"
-                      type="email"
-                      placeholder="email@yourcompany.com"
-                    />
-                  </div>
-                  <p class="control">
-                    <button class="button is-info">Stay Informed</button>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> -->
 
         <section class="section">
           <div class="w-full max-w-screen-lg block mx-auto">
@@ -298,11 +272,6 @@ const services = [
         </section>
         <span class="mb-2 pb-2" />
 
-        <nuxt-img
-          src="@/assets//austin-distel-7KsyY-Ed7B8-unsplash.jpg"
-          alt="About Oplyst International"
-          class="about-image"
-        />
         <section class="section is-medium is-mobile has-text-centered">
           <h1 class="statement">Our Values</h1>
           <ul>
@@ -323,7 +292,7 @@ const services = [
             </button>
           </div>
           <div class="content is-large">
-            <center><h3>Oplyst International</h3></center>
+            <h3>Oplyst International</h3>
             <p>
               At Oplyst International, we are innovators, disruptors, and pioneers. Our
               unique combination of technology, logistics, and financial advisory allows

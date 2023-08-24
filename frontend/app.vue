@@ -1,4 +1,9 @@
-<script setup>
+<script lang="ts" setup>
+/*const apis = ref(['starlink', 'todos', 'github']);
+
+const apiCookie = useCookie('apollo_api', { default: () => apis.value[0] });
+const api = ref(apiCookie.value);
+watch(api, (value) => (apiCookie.value = value)); */
 </script>
 
 <template>

@@ -1,0 +1,18 @@
+query {
+  serviceCollection {
+    items {
+      serviceName
+      serviceDescription {
+        json
+      }
+      pageTitle
+      pageSubtitle
+      heroImage {
+        title
+        url
+      }
+      callToAction
+      lendingLimits
+    }
+  }
+}

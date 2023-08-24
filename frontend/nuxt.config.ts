@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 		assets: "/<rootDir>/assets",
 		components: "/<rootDir>/components",
 	},
-	modules: ['@nuxtjs/tailwindcss'],
+	modules: ['@nuxtjs/tailwindcss','@nuxt/image-edge', '@pinia/nuxt', 'nuxt-icons', '@nuxt/image', '@nuxtjs/apollo'],
 	app: {
 		head: {
 			title: 'Commercial Loans & Finance Solutions | Oplyst USA | (860) 317-6972',
@@ -42,20 +42,24 @@ export default defineNuxtConfig({
 			],
 			link: [{ rel: 'canonical', href: 'https://oplystusa.com/' }],
 			metaInfo: {
-				script: [{ src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js', async: true, defer: true }],
-			},
+				script: { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js', async: true, defer: true }
+			}
 		},
-		modules: ['@nuxt/image-edge', '@pinia/nuxt', 'nuxt-icons', '@nuxt/image'],
 		pinia: {
 			autoImports: [
-				['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
+				['defineStore', 'definePiniaStore'], 
 			],
+		}		
+	},
+	runtimeConfig: {
+		appContentfulAccessToken: process.env.NUXT_APP_CONTENTFUL_ACCESS_TOKEN,
+		appContentfulStageId: process.env.NUXT_APP_CONTENTFUL_SPACE_ID
+	},
+	apollo: {
+		autoImports: true,
+		clients: {
+		  default:  '../apollo/cms.ts',
 		},
-		publicRuntimeConfig: {
-			CMS_API_TOKEN: process.env.CMS_API_TOKEN,
-			HELLOWORLD: process.env.HELLOWORLD,
-		},
-		
 	},
 	image: {
 		inject: true,

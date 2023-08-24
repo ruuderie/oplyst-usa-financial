@@ -46,9 +46,8 @@ const currentYear = computed(() => {
             <div>
               <!-- nuxt link to linkedin url -->
               <NuxtLink href="https://www.linkedin.com/company/oplystusa" target="_blank">
-                
+                Linkedin
               </NuxtLink>
-              <nuxt-icon name="social/linkedin"/> 
 
             </div>
           </div>
@@ -60,7 +59,6 @@ const currentYear = computed(() => {
           <p>
             © Oplyst International, LLC {{ currentYear }}. All rights reserved.
             <br/>
-            Made with <NuxtLink href="https://www.nuxtjs.org" ><Icon name="logos:nuxt" class="is-large" /></NuxtLink>
           </p>
         </div>
       </div>
