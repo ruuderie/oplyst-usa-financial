@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed } from "vue";
 
+const misc = ref({});
+
 const options = [
   {
     label: "Our Company",
@@ -177,14 +179,14 @@ onBeforeUnmount(() => {
                   {{ menu.label }}
                 </NuxtLink>
                 <div
-                  v-if="menu.children && menu.children.length > 0"
-                  class="navbar-dropdown"
+                  v-if="misc[menu.label] && menu.children && menu.children.length > 0"
+                  class="navbar-dropdown right-0 !-left-48"
                 >
                   <NuxtLink
                     v-for="child in menu.children"
                     :key="child.label"
                     :to="'/' + menu.name.toLowerCase() + '/' + child.name.toLowerCase()"
-                    class="navbar-item"
+                    class="navbar-item truncate"
                   >
                     {{ child.label }}
                   </NuxtLink>

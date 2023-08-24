@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 		assets: "/<rootDir>/assets",
 		components: "/<rootDir>/components",
 	},
-	modules: ['@nuxtjs/tailwindcss'],
+	modules: ['@nuxtjs/tailwindcss', 'nuxt-icon'],
 	app: {
 		head: {
 			title: 'Commercial Loans & Finance Solutions | Oplyst USA | (860) 317-6972',

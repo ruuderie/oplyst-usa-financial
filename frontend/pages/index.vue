@@ -95,20 +95,20 @@ const services = [
     route: "services/merchant-cash-advance",
   },
   {
-    id: 5,
-    name: "More Services",
-    description:
-      "View the entire range of loan products we can provide to help your business grow.",
-    imageSource: "",
-    route: "/services",
-  },
-  {
     id: 6,
     name: "Healthcare Loans",
     description:
       "Whether it's for new equipment, expansion or payroll we have many specialized offerings by various lenders.",
     imageSource: "",
     route: "industries/healthcare",
+  },
+  {
+    id: 5,
+    name: "More Services",
+    description:
+      "View the entire range of loan products we can provide to help your business grow.",
+    imageSource: "",
+    route: "/services",
   },
 ];
 </script>
@@ -268,6 +268,7 @@ const services = [
                     :name="service.name"
                     :description="service.description"
                     :imageSource="service.imageSource"
+                    style="height: 100%"
                   />
                 </NuxtLink>
               </div>
@@ -290,6 +291,7 @@ const services = [
                     :name="industry.name"
                     :description="industry.description"
                     :imageSource="industry.imageSource"
+                    style="height: 100%"
                   />
                 </NuxtLink>
               </div>
@@ -316,7 +318,7 @@ const services = [
           </ul>
         </section>
 
-        <section class="section is-medium is-flex-mobile">
+        <section class="section is-medium">
           <div class="has-text-centered py-3">
             <button class="button is-large is-responsive">
               Schedule a Discovery Call
