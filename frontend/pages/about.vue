@@ -30,7 +30,13 @@
           <p>
             Reputed for our unwavering dedication and reliability, our name resonates with trust in the industry. Whether you're kickstarting your dream or are an established name, Oplyst International is geared to cater to your financial needs. Reach out to us for a complimentary consultation and let us embark on a successful journey together.
           </p>
+          <p class="call-to-action">
+                    We're always happy to help! Tell us about your business and its financial needs and we'll help you get the capital you need.
+                    <a href="tel:860-333-6524" > (860)-333-6524 </a> or email
+                    <a href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a> to chat with our Commercial Finance Consultants.
+        </p>
         </div>
+        
       </section>
     </NuxtLayout>
   </div>

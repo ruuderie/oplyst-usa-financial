@@ -263,9 +263,11 @@ const services = [
 
         <section class="section is-medium">
           <div class="has-text-centered py-3">
-            <button class="button is-large is-responsive">
-              Schedule a Discovery Call
-            </button>
+            <a href="mailto:loans@oplystusa.com" >
+              <button class="button is-large is-responsive">
+                Schedule a Discovery Call
+              </button>
+            </a>
           </div>
           <div class="content is-large">
             <center><h3>Oplyst International</h3></center>
