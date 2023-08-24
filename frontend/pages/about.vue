@@ -32,8 +32,8 @@
           </p>
           <p class="call-to-action">
                     We're always happy to help! Tell us about your business and its financial needs and we'll help you get the capital you need.
-                    <a href="tel:860-333-6524" > (860)-333-6524 </a> or email
-                    <a href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a> to chat with our Commercial Finance Consultants.
+                    <a target="_blank" ref="tel:860-333-6524" > (860)-333-6524 </a> or email
+                    <a target="_blank" href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a> to chat with our Commercial Finance Consultants.
         </p>
         </div>
         

@@ -34,8 +34,8 @@ const currentYear = computed(() => {
         <!-- Contact Us -->
         <div class="column is-3">
           <h5>Contact Us</h5>
-          <a href="tel:860-333-6524" > (860)-333-6524 </a>
-          <a href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a>
+          <a target="_blank" href="tel:860-333-6524" > (860)-333-6524 </a>
+          <a target="_blank" href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a>
         </div>
 
         <!-- Follow Us -->

@@ -166,7 +166,7 @@ const services = [
               <div class="column is-one-third">
                 <h3 class="statement-subtitle">Swift and Simple Application Process</h3>
                 <p>
-                  Simply contact us at <a href="tel:860-333-6524" > (860)-333-6524 </a> or via email at <a href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a>. 
+                  Simply contact us at <a target="_blank" href="tel:860-333-6524" > (860)-333-6524 </a> or via email at <a target="_blank" href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a>. 
                   Designed for businesses operational for at least 2 months and boasting a monthly
                   revenue of over $10,000, we ensure your time is well-spent.
                 </p>
@@ -263,7 +263,7 @@ const services = [
 
         <section class="section is-medium">
           <div class="has-text-centered py-3">
-            <a href="mailto:loans@oplystusa.com" >
+            <a target="_blank" href="mailto:loans@oplystusa.com" >
               <button class="button is-large is-responsive">
                 Schedule a Discovery Call
               </button>

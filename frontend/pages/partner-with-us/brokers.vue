@@ -23,8 +23,8 @@
                 </ul>
                 <p class="call-to-action">
                     Take the leap into a partnership that values your contribution and dedication! Dial 
-                    <a href="tel:860-333-6524" > (860)-333-6524 </a> or email
-                    <a href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a> to chat with our Commercial Finance Consultants.
+                    <a target="_blank" href="tel:860-333-6524" > (860)-333-6524 </a> or email
+                    <a target="_blank" href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a> to chat with our Commercial Finance Consultants.
                 </p>
             </section>
         </NuxtLayout>
