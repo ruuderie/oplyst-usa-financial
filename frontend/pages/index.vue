@@ -37,6 +37,14 @@ const industries = [
     route: "industries/healthcare",
   },
   {
+    id: 4,
+    name: "Retail",
+    description:
+      "Keep your shelves stocked with Inventory Financing. We'll help you get the funds you need to keep your business running",
+    imageSource: "",
+    route: "industries/retail",
+  },
+  {
     id: 5,
     name: "Manufacturing",
     description:
@@ -50,7 +58,7 @@ const industries = [
     description:
       "For every owner operator out there, we provide financing that keeps you on the road and able to meet demand.",
     imageSource: "",
-    route: "industries/retail",
+    route: "industries/logistics",
   },
 ];
 
