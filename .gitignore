@@ -21,7 +21,7 @@ dist
 # CSV and PDF files
 *.csv
 *.pdf
-/frontend/data/*
+/frontend/data/
 # Logs
 *.log*
 
