@@ -1,8 +1,12 @@
 
 extern crate polars;
 extern crate scraper;
+extern crate csv;
+extern crate regex;
+use std::path::Path;
 use std::{fs, collections::HashMap};
-
+use std::error::Error as StdError;
+use regex::Regex;
 use std::io::Result;
 use std::fs::File;
 use polars::prelude::*;
@@ -120,16 +124,78 @@ pub fn aggregate_email_counts(dir_path: &str) -> Result<HashMap<String, usize>> 
 
     Ok(total_email_counts_per_state)
 }
-/*/
-fn main() -> Result<()> {
-    let dir_path = "./data/";
-    let email_counts = aggregate_email_counts(dir_path)?;
+pub fn analyze_b2b_data(file_path: &str, prefix: &str) -> std::result::Result<(), Box<dyn std::error::Error>> {
+    // 1. Load the data
+    let df = CsvReader::new(File::open(file_path)?)
+        .infer_schema(Some(1000))
+        .has_header(true)
+        .finish()
+        .map_err(|e| Box::new(e) as Box<dyn std::error::Error>)?;
 
-    println!("Total email counts per state:");
-    for (state, count) in email_counts.iter() {
-        println!("State: {}, Email Count: {}", state, count);
+    // Print the first 5 rows
+    println!("{:?}", df.head(Some(5)));
+
+    // Convert the DataFrame to a LazyFrame
+    let ldf = df.lazy();
+
+    // 2. Analyses
+    let analyses = vec![
+        ("Industry", "industry_distribution"),
+        ("Job title", "job_title_distribution"),
+        ("Company Name", "company_distribution"),
+        ("Company Size", "company_size_distribution"),
+        ("Location", "location_distribution")
+    ];
+
+    for (column, file_suffix) in analyses.iter() {
+        let output = ldf.clone()
+            .groupby(vec![col(column)])
+            .agg(vec![col(column).count()])
+            .sort(column, SortOptions { descending: true, nulls_last: true })
+            .collect()
+            .map_err(|e| Box::new(e) as Box<dyn std::error::Error>)?;
+
+        // Placeholder for writing the DataFrame to CSV. Adjust this to the correct method.
+        println!("{:?}", output);
     }
+
+    println!("All distributions saved to CSV files.");
+    Ok(())
+}
+pub fn transform_csv_with_stacked_addresses(input_path: &Path, output_path: &Path) -> std::result::Result<(), Box<dyn std::error::Error>> {
+    let mut rdr = csv::Reader::from_reader(File::open(input_path)?);
+    let mut wtr = csv::Writer::from_writer(File::create(output_path)?);
+
+    // Write headers to the new CSV
+    wtr.write_record(&["#", "Name and Trade Name of Firm", "Contact", "Address", "City", "State", "Zip", "Capabilities Narrative", "EMAIL"])?;
+
+    for result in rdr.records() {
+        let record = result?;
+        let address = &record[3];
+
+        // Use regex to split address into "Address", "City", "State" and "Zip"
+        let re = Regex::new(r"^(.*), ([^,]+), ([A-Z]{2}) (\d+)$").unwrap();
+        let caps = re.captures(address).unwrap_or_else(|| {
+            panic!("Failed to parse address: {}", address);
+        });
+
+        // Write to new CSV
+        wtr.write_record(&[
+            &record[0], 
+            &record[1], 
+            &record[2], 
+            caps.get(1).map_or("", |m| m.as_str()),
+            caps.get(2).map_or("", |m| m.as_str()),
+            caps.get(3).map_or("", |m| m.as_str()),
+            caps.get(4).map_or("", |m| m.as_str()),
+            &record[4], 
+            &record[5]
+        ])?;
+    }
+
+    wtr.flush()?;
 
     Ok(())
 }
-*/
+
+
