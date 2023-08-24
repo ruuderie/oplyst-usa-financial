@@ -268,6 +268,11 @@ const services = [
                 Schedule a Discovery Call
               </button>
             </a>
+            <div class="apply-now-button-wrapper">
+                  <a href="https://www.nationalbusinesscapital.com/apply-now/?ref=2762241" target="_blank" class="apply-now-button">
+                    Urgent? Apply Now for Pre-Approval
+                  </a>
+             </div>
           </div>
           <div class="content is-large">
             <center><h3>Oplyst International</h3></center>
