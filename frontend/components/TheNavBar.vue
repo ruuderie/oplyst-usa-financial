@@ -204,14 +204,15 @@ onBeforeUnmount(() => {
                     {{ child.label }}
                   </NuxtLink>
                 </div>
-                <div class="apply-now-button-wrapper">
+
+              </div>
+            </div>
+          </div>
+          <div class="apply-now-button-wrapper">
                   <a href="https://www.nationalbusinesscapital.com/apply-now/?ref=2762241" target="_blank" class="apply-now-button">
                     Urgent? Apply Now for Pre-Approval
                   </a>
                 </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </nav>
