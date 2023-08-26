@@ -4,9 +4,11 @@ use polars::prelude::*;
 use std::{error::Error, fs, collections::HashMap, path::Path};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let input_path = Path::new("./data/SBA_Construction_Contractors.csv");
-    let output_path = Path::new("./data/SBA_Construction_08_2023.csv");
-    transform_csv_with_stacked_addresses(input_path, output_path)?;
+    let path1 = Path::new("./data/SBA_Construction_Contractors.csv");
+    let path2 = Path::new("./data/SBA_Construction_Contractors_2.csv");
+    transform_csv_with_stacked_addresses(vec![path1, path2], &Path::new("./data/SBA_Construction_08_23.csv")).unwrap();
+
+
     Ok(())
 }
 /*
