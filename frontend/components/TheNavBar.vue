@@ -204,14 +204,33 @@ onBeforeUnmount(() => {
                     {{ child.label }}
                   </NuxtLink>
                 </div>
-
               </div>
             </div>
-            <div class="apply-now-button-wrapper">
-                  <a href="https://www.nationalbusinesscapital.com/apply-now/?ref=2762241" target="_blank" class="apply-now-button">
-                    Urgent? Apply Now for Pre-Approval
-                  </a>
-             </div>
+            <div
+              :class="[
+                showMobileNav
+                  ? 'w-full h-[48px] bg-[#cca23c]'
+                  : 'w-auto h-auto bg-transparent',
+                'flex items-center sticky right-0',
+              ]"
+            >
+              <a
+                :class="[
+                  showMobileNav
+                    ? 'rounded-none text-lg shadow-2xl'
+                    : 'rounded-md bg-[#cca23c] hover:bg-[#b29235] h-fit w-fit text-base',
+                  'w-full h-auto px-4 py-2 text-[#18375F]',
+                ]"
+                target="_blank"
+                href="https://www.nationalbusinesscapital.com/apply-now/?ref=2762241"
+              >
+                <div v-if="!showMobileNav">
+                  <p class="font-medium text-sm">Urgent?</p>
+                  <p class="text-xs font-bold">Apply Now for Pre-Approval</p>
+                </div>
+                <span v-else>Urgent? Apply Now for Pre-Approval</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -291,5 +310,4 @@ onBeforeUnmount(() => {
   transform: scale(1.05); /* Slightly increase size when hovered */
   text-decoration: none; /* Remove underlines from link on hover */
 }
-
 </style>

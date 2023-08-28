@@ -135,7 +135,6 @@ const services = [
           </div>
         </section>
 
-
         <section class="section">
           <div class="w-full max-w-screen-lg block mx-auto">
             <div class="grid grid-cols-12 gap-3">
@@ -165,26 +164,45 @@ const services = [
             Dynamic Lending and Financing for Modern Real Estate and Business Goals.
         </h2> -->
         <section class="section">
-          <div class="container">
-            <h2 class="statement has-text-centered">
+          <div class="container space-y-12">
+            <h2
+              class="statement has-text-centered !text-5xl w-full max-w-4xl block mx-auto"
+            >
               Tailored Business Funding Service with Precision Matching
             </h2>
 
             <div class="columns">
               <div class="column is-one-third">
-                <h3 class="statement-subtitle">Swift and Simple Application Process</h3>
-                <p>
-                  Simply contact us at <a target="_blank" href="tel:860-333-6524" > (860)-333-6524 </a> or via email at <a target="_blank" href="mailto:loans@oplystusa.com" > loans@oplystusa.com </a>. 
-                  Designed for businesses operational for at least 2 months and boasting a monthly
-                  revenue of over $10,000, we ensure your time is well-spent.
+                <h3 class="statement-subtitle !text-3xl border-l-8 border-[#123262] pl-4">
+                  Swift and Simple Application Process
+                </h3>
+                <p class="!text-lg !font-medium">
+                  Simply contact us at
+                  <a
+                    target="_blank"
+                    href="tel:860-333-6524"
+                    class="text-black font-medium hover:text-blue-700"
+                  >
+                    (860)-333-6524
+                  </a>
+                  or via email at
+                  <a
+                    target="_blank"
+                    href="mailto:loans@oplystusa.com"
+                    class="text-black font-medium hover:text-blue-700"
+                  >
+                    loans@oplystusa.com </a
+                  >. Designed for businesses operational for at least 2 months and
+                  boasting a monthly revenue of over $10,000, we ensure your time is
+                  well-spent.
                 </p>
               </div>
 
               <div class="column is-one-third">
-                <h3 class="statement-subtitle">
+                <h3 class="statement-subtitle !text-3xl border-l-8 border-[#123262] pl-4">
                   Expert Loan Underwriting for Your Profile
                 </h3>
-                <p>
+                <p class="!text-lg !font-medium">
                   Our seasoned underwriters meticulously review your application, ensuring
                   you're perfectly matched. Based on your unique profile, we connect you
                   to lenders who are actively seeking businesses with your exact
@@ -193,8 +211,10 @@ const services = [
               </div>
 
               <div class="column is-one-third">
-                <h3 class="statement-subtitle">Direct Connection to Suitable Lenders</h3>
-                <p>
+                <h3 class="statement-subtitle !text-3xl border-l-8 border-[#123262] pl-4">
+                  Direct Connection to Suitable Lenders
+                </h3>
+                <p class="!text-lg !font-medium">
                   Gone are the days of one-size-fits-all loan offers. We specialize in
                   pairing you with lenders that match your profile, expediting approval
                   processes. With our precision-matching, you could potentially access
@@ -270,28 +290,33 @@ const services = [
         </section>
 
         <section class="section is-medium">
-          <div class="has-text-centered py-3">
-            <a target="_blank" href="mailto:loans@oplystusa.com" >
-              <button class="button is-large is-responsive">
+          <div class="has-text-centered py-3 space-y-4">
+            <a target="_blank" href="mailto:loans@oplystusa.com">
+              <button class="button is-large is-responsive rounded-md">
                 Schedule a Discovery Call
               </button>
             </a>
             <div class="apply-now-button-wrapper">
-                  <a href="https://www.nationalbusinesscapital.com/apply-now/?ref=2762241" target="_blank" class="apply-now-button">
-                    Urgent? Apply Now for Pre-Approval
-                  </a>
-             </div>
+              <a
+                href="https://www.nationalbusinesscapital.com/apply-now/?ref=2762241"
+                target="_blank"
+                class="apply-now-button !bg-yellow-400 px-4 py-1 rounded-md inline-flex items-center gap-3 !text-black"
+              >
+                <span>Urgent? Apply Now for Pre-Approval</span>
+                <icon name="material-symbols:open-in-new" />
+              </a>
+            </div>
           </div>
           <div class="content is-large">
             <center><h3>Oplyst International</h3></center>
-            <p>
+            <p class="!text-xl !font-medium">
               At Oplyst International, we are innovators, disruptors, and pioneers. Our
               unique combination of technology, logistics, and financial advisory allows
               us to provide holistic solutions to complex challenges. We do business with
               integrity, fostering long-term partnerships based on mutual trust and
               respect.
             </p>
-            <p>
+            <p class="!text-xl !font-medium">
               With a firm commitment to simplicity, quality, and service, we prioritize
               client satisfaction and champion a future where businesses thrive. Oplyst
               International is more than just a company - we are shaping the future.
