@@ -1,11 +1,11 @@
 extern crate polars;
 //use data_processing::{create_csv, transform_csv_with_stacked_addresses};
 // src/main.rs
-use data_processing::credit_insights::credit::load_business_insights;
+use data_processing::data_scripts::credit::load_business_insights;
 use std::{ path::Path};
 use dotenv::dotenv;
 mod db;
-mod credit_insights;
+mod data_scripts;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
