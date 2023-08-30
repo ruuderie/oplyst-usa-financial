@@ -8,50 +8,61 @@ const currentYear = computed(() => {
 </script>
 
 <template>
-  <footer class="footer py-6 finance-footer">
-    <div class="container">
-      <!-- Footer Sections -->
-      <div class="columns is-multiline">
-        <!-- About Section -->
-        <div class="column is-3">
-          <h5>About Us</h5>
-          <ul>
-            <li><NuxtLink to="/">Home</NuxtLink></li>
-            <li><NuxtLink to="/services">Services</NuxtLink></li>
-            <li><NuxtLink to="/team">Our Team</NuxtLink></li>
-          </ul>
+  <footer>
+    <div class="px-5">
+      <div class="grid grid-cols-12 gap-x-3 gap-y-12">
+        <div class="col-span-12 md:col-span-6 lg:col-span-3">
+          <div class="flex items-start justify-start lg:justify-end">
+            <div>
+              <h5 class="mb-3">About Us</h5>
+              <ul>
+                <li><NuxtLink to="/">Home</NuxtLink></li>
+                <li><NuxtLink to="/services">Services</NuxtLink></li>
+                <li><NuxtLink to="/team">Our Team</NuxtLink></li>
+              </ul>
+            </div>
+          </div>
         </div>
-
-        <!-- Quick Links -->
-        <div class="column is-3">
-          <h5>Quick Links</h5>
-          <ul>
-            <li><NuxtLink to="/terms">Terms of Service</NuxtLink></li>
-            <li><NuxtLink to="/privacy">Privacy Policy</NuxtLink></li>
-          </ul>
+        <div class="col-span-12 md:col-span-6 lg:col-span-3">
+          <div class="flex items-start justify-start md:justify-start lg:justify-center">
+            <div>
+              <h5 class="mb-3">Quick Links</h5>
+              <ul>
+                <li><NuxtLink to="/terms">Terms of Service</NuxtLink></li>
+                <li><NuxtLink to="/privacy">Privacy Policy</NuxtLink></li>
+              </ul>
+            </div>
+          </div>
         </div>
-
-        <!-- Contact Us -->
-        <div class="column is-3">
-          <h5>Contact Us</h5>
-          <a target="_blank" href="tel:860-333-6524"> (860)-333-6524 </a><br />
-          <a target="_blank" href="mailto:loans@oplystusa.com"> loans@oplystusa.com </a>
+        <div class="col-span-12 md:col-span-6 lg:col-span-3">
+          <div class="flex items-start justify-start md:justify-start lg:justify-center">
+            <div>
+              <h5 class="mb-3">Contact Us</h5>
+              <a target="_blank" href="tel:860-333-6524"> (860)-333-6524 </a><br />
+              <a target="_blank" href="mailto:loans@oplystusa.com">
+                loans@oplystusa.com
+              </a>
+            </div>
+          </div>
         </div>
-
-        <!-- Follow Us -->
-        <div class="column is-3">
-          <h5>Follow Us</h5>
-          <div class="flex items-center gap-3 -mx-1">
-            <!-- nuxt link to linkedin url -->
-            <NuxtLink href="https://www.linkedin.com/company/oplystusa" target="_blank">
-              <icon name="mdi:linkedin" />
-            </NuxtLink>
+        <div class="col-span-12 md:col-span-6 lg:col-span-3">
+          <div class="flex items-start justify-start md:justify-start lg:justify-start">
+            <div>
+              <h5 class="mb-3">Follow Us</h5>
+              <div class="flex items-start justify-start md:justify-start gap-1">
+                <!-- nuxt link to linkedin url -->
+                <NuxtLink
+                  href="https://www.linkedin.com/company/oplystusa"
+                  target="_blank"
+                >
+                  <icon name="mdi:linkedin" />
+                </NuxtLink>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Copyright Information -->
-      <div class="content has-text-centered">
+      <div class="content has-text-centered mt-12">
         <p>
           © Oplyst International, LLC {{ currentYear }}. All rights reserved.
           <br />
