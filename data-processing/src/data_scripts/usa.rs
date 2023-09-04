@@ -41,7 +41,7 @@ pub fn analyze_b2b_data(file_path: &str, prefix: &str) -> std::result::Result<()
         let output = ldf.clone()
             .groupby(vec![col(column)])
             .agg(vec![col(column).count()])
-            .sort(column, SortOptions { descending: true, nulls_last: true })
+            .sort(column, SortOptions { descending: true, nulls_last: true, multithreaded: true, maintain_order: false })
             .collect()
             .map_err(|e| Box::new(e) as Box<dyn std::error::Error>)?;
 

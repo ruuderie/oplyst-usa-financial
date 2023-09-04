@@ -1,6 +1,8 @@
+use crate::model;
 use crate::db;
-use crate::db::us_business_credit_analysis;
-use crate::db::postgres;
+
+use crate::model::us_business_credit_analysis;
+use db::postgres;
 use std::{
     fs::{self, File, OpenOptions},
 };

@@ -21,33 +21,10 @@ pub fn transform_csv_with_stacked_addresses(input_paths: Vec<&Path>, output_path
     println!("Initializing counter...");
     let mut counter = 0;
     println!("Setting up common email domains...");
-    let common_email_domains: HashSet<&str> = [
-    "gmail.com",
-    "yahoo.com",
-    "hotmail.com",
-    "aol.com",
-    "outlook.com",
-    "msn.com",
-    "icloud.com",
-    "live.com",
-    "comcast.net",
-    "ymail.com",
-    "mail.com",
-    "verizon.net",
-    "sbcglobal.net",
-    "cox.net",
-    "me.com",
-    "att.net",
-    "bellsouth.net",
-    "rocketmail.com",
-    "earthlink.net",
-    "optonline.net",
-    "juno.com",
-    "protonmail.com"].iter().cloned().collect();
+    
 
     let re = Regex::new(r"^(.*?), ([^,]+),? ([A-Z]{2}) (\d+-?\d*)$").unwrap();
     let mut counter = 0;
-    let common_email_domains: HashSet<&str> = [ /* ... your email domains here ... */ ].iter().cloned().collect();
     
     let mut wtr = if output_path.exists() {
         let w = WriterBuilder::new().quote_style(QuoteStyle::Never).from_writer(OpenOptions::new().append(true).open(output_path)?);

@@ -1,20 +1,23 @@
-extern crate polars;
-//use data_processing::{create_csv, transform_csv_with_stacked_addresses};
-// src/main.rs
 use data_processing::data_scripts::credit::load_business_insights;
+use data_processing::data_scripts::shippers::load_shipper_insights;
+use data_processing::data_scripts::business_credit_usa::load_business_leads_insights;
+use crate::model::shippers;
 use std::{ path::Path};
 use dotenv::dotenv;
-mod db;
+mod model;
 mod data_scripts;
+mod db;
+pub mod utils;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-
-    // Run your business logic function and handle errors
-    load_business_insights().await?;
-
+    //let paths = ["./data/LOGISTICS_SHIPPERS - Owners.csv","./data/LOGISTICS_WAREHOUSES_DISTRIBUTORS - Owners.csv"];
+    //let counts = aggregate_email_counts(&paths)?;
+    //println!("{:?}", counts);
+    load_business_leads_insights().await.expect_err("Error getting business leads insights");
     Ok(())
 }
+
 /* 
     //sba file analysis 
     dotenv().ok();
@@ -50,13 +53,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     //analyze_b2b_data("./data/USA.csv", &usa_prefix)?;
 */
 
-        /*
-        // Aggregate email counts from CSV files
-        let email_counts = aggregate_email_counts(csv_dir_path)?;
-    
-        // Print the results
-        println!("Total email counts per state:");
-        for (state, count) in email_counts.iter() {
-            println!("State: {}, Email Count: {}", state, count);
-        }
-        */
+/*
+    //laoding credit insights and handle errors
+
+    load_business_insights().await?;
+*/
+
