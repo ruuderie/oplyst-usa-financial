@@ -17,7 +17,7 @@ dist
 # Compiled Vue.js artifacts
 /frontend/dist/
 /frontend/node_modules/
-
+/data-processing/data/
 # CSV and PDF files
 *.csv
 *.pdf
