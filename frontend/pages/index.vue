@@ -129,7 +129,7 @@ const services = [
                 @oplyst-international
               </NuxtLink>
               <h3 class="text-white text-2xl md:text-4xl lg:text-6xl font-bold">
-                Elevate Your Ambitions with Direct, Fast, and Custom Business Financing.
+                Easy, Fast, Customized Business Capital
               </h3>
             </div>
           </div>
