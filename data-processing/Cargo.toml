@@ -24,4 +24,5 @@ env_logger = "0.9"
 futures = "0.3"
 #may not need tokio-postgres anymore
 tokio-postgres =  "0.7.10"
+Inflector = "0.11.4"
 

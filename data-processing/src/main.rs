@@ -1,5 +1,6 @@
 use data_processing::data_scripts::credit::load_business_insights;
 use data_processing::data_scripts::shippers::load_shipper_insights;
+use data_processing::data_scripts::sba::{create_csv, transform_csv_with_stacked_addresses};
 use data_processing::data_scripts::business_credit_usa::load_business_leads_insights;
 use crate::model::shippers;
 use std::{ path::Path};
@@ -11,19 +12,28 @@ pub mod utils;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    //create_csv().await?;
+    let path1 = Path::new("./data/output_OK_ONLY_MILLIONVERIFIER.COM.csv");
+    transform_csv_with_stacked_addresses(vec![path1], &Path::new("./data/manufacturers_1_09_09_2023.csv")).unwrap();
+
+    Ok(())
+    
+}
+
+/*
+Business Leads Insights:
     //let paths = ["./data/LOGISTICS_SHIPPERS - Owners.csv","./data/LOGISTICS_WAREHOUSES_DISTRIBUTORS - Owners.csv"];
     //let counts = aggregate_email_counts(&paths)?;
     //println!("{:?}", counts);
-    load_business_leads_insights().await.expect_err("Error getting business leads insights");
-    Ok(())
-}
+    //load_business_leads_insights().await.expect_err("Error getting business leads insights");
+    //Ok(())
+*/
 
 /* 
     //sba file analysis 
     dotenv().ok();
     let path1 = Path::new("./data/SBA_Construction_Contractors.csv");
-    let path2 = Path::new("./data/SBA_Construction_Contractors_2.csv");
-    transform_csv_with_stacked_addresses(vec![path1, path2], &Path::new("./data/SBA_Construction_08_28.csv")).unwrap();
+
 
 
 async fn main() -> Result<(), Box<dyn std::error::Error>> {

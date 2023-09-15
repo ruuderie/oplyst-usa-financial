@@ -7,33 +7,44 @@ use tokio_postgres::{NoTls};
 use csv::{Reader,QuoteStyle,Writer,WriterBuilder};
 use polars::prelude::*;
 use regex::Regex;
+use inflector::Inflector;
 use scraper::{Html, Selector};
 use std::future::Future;
 use std::pin::Pin;
+use crate::utils::zip_code::{ZipData, load_zip_data};
 extern crate log;
 extern crate env_logger;
 use log::debug;
 //Small Business Data
 pub fn transform_csv_with_stacked_addresses(input_paths: Vec<&Path>, output_path: &Path) -> std::result::Result<(), Box<dyn std::error::Error>> {
 
-    println!("Initializing regex for address parsing...");
     let re = Regex::new(r"^(.*?), ([^,]+),? ([A-Z]{2}) (\d+-?\d*)$").unwrap();
-    println!("Initializing counter...");
     let mut counter = 0;
-    println!("Setting up common email domains...");
-    
 
-    let re = Regex::new(r"^(.*?), ([^,]+),? ([A-Z]{2}) (\d+-?\d*)$").unwrap();
-    let mut counter = 0;
-    
     let mut wtr = if output_path.exists() {
-        let w = WriterBuilder::new().quote_style(QuoteStyle::Never).from_writer(OpenOptions::new().append(true).open(output_path)?);
-        w
+        WriterBuilder::new()
+            .quote_style(QuoteStyle::Never)
+            .from_writer(OpenOptions::new().append(true).open(output_path)?)
     } else {
-        let mut writer = WriterBuilder::new().quote_style(QuoteStyle::Necessary).from_writer(File::create(output_path)?);
-        writer.write_record(&["#", "Name and Trade Name of Firm", "First Name", "Last Name", "Address", "City", "State", "Zip", "Capabilities Narrative", "Email"])?;
+        let mut writer = WriterBuilder::new()
+            .quote_style(QuoteStyle::Necessary)
+            .from_writer(File::create(output_path)?);
+        writer.write_record(&[
+            "#",
+            "Name and Trade Name of Firm",
+            "First Name",
+            "Last Name",
+            "Address",
+            "City",
+            "State",
+            "Zip",
+            "Capabilities Narrative",
+            "Email",
+        ])?;
         writer
     };
+    let zip_data_path = Path::new("./data/zip code/us_zip_code.csv");
+    let zip_data = load_zip_data(zip_data_path)?;
 
     for input_path in input_paths.iter() {
         println!("Processing file: {:?}", input_path);
@@ -57,7 +68,8 @@ pub fn transform_csv_with_stacked_addresses(input_paths: Vec<&Path>, output_path
 
             consolidated_record[3] = full_address;
         
-            process_record(&consolidated_record, wtr, re, counter)
+            process_record(&consolidated_record, wtr, &re, &zip_data, counter)?;
+            Ok(())
         };
         
 
@@ -86,7 +98,7 @@ fn has_personal_email_domain(email: &str, common_email_domains: &HashSet<&str>) 
     let email_domain = email.split('@').last().unwrap_or("");
     common_email_domains.contains(email_domain)
 }
-fn process_record(record: &[String], wtr: &mut Writer<File>, re: &Regex, counter: &mut usize) -> std::result::Result<(), Box<dyn std::error::Error>> {
+fn process_record(record: &[String], wtr: &mut Writer<File>, re: &Regex, zip_data: &[ZipData], counter: &mut usize) -> std::result::Result<(), Box<dyn std::error::Error>> {
     let common_email_domains: HashSet<&str> = [
         "gmail.com",
         "yahoo.com",
@@ -117,52 +129,32 @@ fn process_record(record: &[String], wtr: &mut Writer<File>, re: &Regex, counter
     }
 
     // Parsing names
-    let names: Vec<&str> = record[2].split_whitespace().collect();
-    let first_name = names.get(0).unwrap_or(&"").to_string();
-    let last_name = names.get(1..).map_or("".to_string(), |slice| slice.join(" "));
-
-    println!("First Name: {}", first_name);
-    println!("Last Name: {}", last_name);
+    let names: Vec<&str> = record[1].split_whitespace().collect();
+    let first_name = names.get(0).unwrap_or(&"").to_string().to_title_case();
+    let last_name = names.get(1..).map_or("".to_string(), |slice| slice.join(" ")).to_title_case();
 
     // Parsing address
-    let re_address = Regex::new(r"(?i)^([\w\s]+),\s+([A-Za-z\s]+)[,\s]+([A-Z]{2})\s+(\d{5}(?:-\d{4})?)$").unwrap();
-
+ 
     let mut address = "".to_string();
     let mut city = "".to_string();
     let mut state = "".to_string();
     let mut zip = "".to_string();
 
-    if let Some(caps) = re_address.captures(&record[3]) {
-        address = caps.get(1).map_or("", |m| m.as_str()).trim().to_string();
-        city = caps.get(2).map_or("", |m| m.as_str()).trim().to_string();
-        state = caps.get(3).map_or("", |m| m.as_str()).to_string();
-        zip = caps.get(4).map_or("", |m| m.as_str()).to_string();
+
+    if let Some((addr, cty, st, zp)) = parse_address_from_patterns(&record[2], zip_data) {
+        address = addr;
+        city = cty;
+        state = st;
+        zip = zp;
     } else {
-        eprintln!("Failed to parse address from record: {:?}", record);
+        eprintln!("Failed to parse address from record: {:?}", &record[2]);
         return Ok(());
     }
 
-    println!("Parsed state: {:?}", state);
-
-    // Validate state abbreviation
-    let valid_states: HashSet<&str> = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"].iter().cloned().collect();
-
-    if !valid_states.contains(state.as_str()) {
-        eprintln!("Invalid state abbreviation in record: {:?}", record);
-        return Ok(());
-    }
-
-    println!("Address: {}", address);
-    println!("City: {}", city);
-    println!("State: {}", state);
-    println!("ZIP: {}", zip);
 
     // Email and capabilities narrative
-    let capabilities = &record[4];
-    let email = &record[5].to_lowercase();
-
-    println!("Capabilities: {}", capabilities);
-    println!("Email: {}", email);
+    let capabilities = &record[3];
+    let email = &record[4].to_lowercase();
     let binding = counter.to_string();
 
     let record_to_write: Vec<String> = vec![
@@ -178,7 +170,7 @@ fn process_record(record: &[String], wtr: &mut Writer<File>, re: &Regex, counter
     sanitize(&email)];
     if !has_personal_email_domain(email, &common_email_domains) {
         *counter += 1;
-        println!("Record to write: {:?}", record_to_write);
+        //println!("Record to write: {:?}", record_to_write);
         wtr.write_record(&record_to_write.iter().map(AsRef::as_ref).collect::<Vec<&str>>())?;
         wtr.flush()?;
     } else {
@@ -187,11 +179,48 @@ fn process_record(record: &[String], wtr: &mut Writer<File>, re: &Regex, counter
     }
     Ok(())
 }
+fn parse_address_from_patterns(record: &str, zip_data: &[ZipData]) -> Option<(String, String, String, String)> {
+    println!("Processing record: {}", record);
+
+    // Extract only the first 5 digits of the ZIP code
+    let zip_pattern = r"\b(\d{5})\b";
+
+    if let Ok(re) = Regex::new(zip_pattern) {
+        if let Some(caps) = re.captures(record) {
+            let zip = caps.get(1).unwrap().as_str();
+            println!("Extracted ZIP: {}", zip);
+
+            // Using the ZIP code, obtain the city and state from zip_data
+            if let Some(data) = zip_data.iter().find(|&data| data.zip == zip) {
+                let city = &data.city;
+                let state_id = &data.state_id;
+                println!("Matched city: {} and state: {}", city, state_id);
+
+                // Procedural approach to extract the address
+                let trimmed_record = record.splitn(2, zip).next().unwrap().trim(); // remove zip and following characters
+                let without_state = trimmed_record.trim_end_matches(state_id).trim(); // remove state
+                let mut address = Regex::new(&format!(r"(?i){}", city))
+                .unwrap()
+                .replace_all(without_state, "")
+                .to_string()
+                .trim()
+                .to_string();
+                if address.ends_with(',') {
+                    address.pop();
+                }
+            
+                println!("Procedurally extracted address: {}", address);
+                
+                return Some((address.to_string(), city.to_string(), state_id.to_string(), zip.to_string()));
+            }
+        }
+    }
+    println!("Failed to parse.");
+    None
+}
 
 fn sanitize(s: &str) -> String {
-    println!("Sanitizing: {}", s);
     let res = s.replace("\"", "");
-    println!("Sanitized: {}", res);
     res
 }
 
@@ -203,37 +232,56 @@ fn parse_html_to_dataframe(html_content: &str) -> DataFrame {
     let fragment = Html::parse_fragment(html_content);
 
     let row_selector = Selector::parse("tr.AlternatingRowBGC4Form1, tr.AlternatingRowBGC4Form0").unwrap();
+    let td_selector = Selector::parse("td").unwrap();
+
     let df = DataFrame::new_no_checks(vec![
         Series::new("Name and Trade Name of Firm", Vec::<String>::new()),
         Series::new("Contact", Vec::<String>::new()),
         Series::new("Address and City, State Zip", Vec::<String>::new()),
         Series::new("Capabilities Narrative", Vec::<String>::new()),
-        Series::new("E-mail Address", Vec::<String>::new()),
+        Series::new("Email", Vec::<String>::new()),
     ]);
 
+    let mut name_and_trade = Vec::new();
+    let mut contact = Vec::new();
+    let mut address = Vec::new();
+    let mut capabilities = Vec::new();
+    let mut email = Vec::new();
+
     for row in fragment.select(&row_selector) {
-        let values: Vec<String> = row
-            .text()
-            .map(|s| s.trim().to_string())
-            .filter(|s| !s.is_empty())
-            .collect();
-    
+        let mut values = Vec::new();
+        for cell in row.select(&td_selector) {
+            let value = cell.text().collect::<Vec<_>>().join("").trim().to_string();
+            if !value.is_empty() {
+                values.push(value);
+            }
+        }
+
         if values.len() == 6 {
-            for (idx, value) in values.iter().skip(1).enumerate() {
-                // The problem here is that idx starts from 0 after the skip.
-                // We might need to adjust the column index accordingly.
-                let adjusted_idx = idx + 1;
-    
-               println!("{}: {}", adjusted_idx, value);
+            name_and_trade.push(values[1].clone());
+            contact.push(values[2].clone());
+            address.push(values[3].clone());
+            capabilities.push(values[4].clone());
+            email.push(values[5].clone());
         }
     }
-    }
+
+    let df = DataFrame::new(vec![
+        Series::new("Name and Trade Name of Firm", name_and_trade),
+        Series::new("Contact", contact),
+        Series::new("Address and City, State Zip", address),
+        Series::new("Capabilities Narrative", capabilities),
+        Series::new("Email", email),
+    ]).unwrap();
+
+    
+    println!("df: {:?}", df);
     df
 
 }
 
-pub fn create_csv() {
-    let folder_path = "./data/";  // replace with the path to your folder
+pub async fn create_csv() -> Result<(), Box<dyn std::error::Error>>{
+    let folder_path = "./data/sba/";  // replace with the path to your folder
 
         // Initialize an empty DataFrame to append each file's data
         let mut aggregated_df = DataFrame::new_no_checks(vec![
@@ -245,6 +293,7 @@ pub fn create_csv() {
         ]);
     
         for entry in fs::read_dir(folder_path).unwrap() {
+            println!("Processing file: {:?}", entry);
             let entry = entry.unwrap();
             let path = entry.path();
             if path.is_file() && path.extension().map_or(false, |ext| ext == "html") {
@@ -261,5 +310,7 @@ pub fn create_csv() {
             .with_delimiter(b',')
             .finish(&mut aggregated_df)
             .expect("could not write to file");
+    
+    Ok(())
 
 }
