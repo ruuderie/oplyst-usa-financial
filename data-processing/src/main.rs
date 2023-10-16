@@ -3,8 +3,11 @@ use data_processing::data_scripts::shippers::load_shipper_insights;
 use data_processing::data_scripts::sba::{create_csv, transform_csv_with_stacked_addresses};
 use data_processing::data_scripts::business_credit_usa::load_business_leads_insights;
 use crate::model::shippers;
+use data_processing::data_scripts::zoom_info::load_zoom_info_insights;
 use std::{ path::Path};
 use dotenv::dotenv;
+use futures::TryFutureExt;
+
 mod model;
 mod data_scripts;
 mod db;
@@ -12,12 +15,9 @@ pub mod utils;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    //create_csv().await?;
-    let path1 = Path::new("./data/output_OK_ONLY_MILLIONVERIFIER.COM.csv");
-    transform_csv_with_stacked_addresses(vec![path1], &Path::new("./data/manufacturers_1_09_09_2023.csv")).unwrap();
-
+    //utils::rename_csv_column::run_clean_up_of_columns();
+    load_zoom_info_insights().await.expect_err("Error getting zoominfo leads");
     Ok(())
-    
 }
 
 /*
@@ -68,4 +68,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     load_business_insights().await?;
 */
+/*
+    //create_csv().await?;
+    let path1 = Path::new("./data/output_OK_ONLY_MILLIONVERIFIER.COM.csv");
+    transform_csv_with_stacked_addresses(vec![path1], &Path::new("./data/manufacturers_1_09_09_2023.csv")).unwrap();
 
+    Ok(())
+*/

@@ -14,7 +14,7 @@ use uuid::Uuid;
 use csv::Writer;
 use std::collections::HashSet;
 use crate::utils::constants::common_email_domains;
-use crate::utils::functions::{remove_quotes, remove_quotes_from_str,remove_quotes_from_string};
+use crate::utils::functions::{remove_quotes_from_anyvalue, remove_quotes_from_str};
 
 pub async fn load_business_leads_insights() -> Result<(), Box<dyn std::error::Error>> {
     // Read the data from the file at runtime
@@ -71,29 +71,29 @@ async fn send_chunk_to_business_credit_directory_db(
     for i in 0..chunk.height() {
         let email_value = email_series.get(i).unwrap().to_string();
         let domain = remove_quotes_from_str(email_value.split('@').last().unwrap_or(""));
-        let business_name = remove_quotes(&chunk.column("BUSINESS NAME").unwrap().get(i).unwrap());
-        let mailing_address = remove_quotes(&chunk.column("MAILING ADDRESS").unwrap().get(i).unwrap());
-        let mailing_city = remove_quotes(&chunk.column("MAILING CITY").unwrap().get(i).unwrap());
-        let mailing_state = remove_quotes(&chunk.column("MAILING STATE").unwrap().get(i).unwrap());
-        let mailing_zip = remove_quotes(&chunk.column("MAILING ZIP").unwrap().get(i).unwrap());
-        let phone = remove_quotes(&chunk.column("AREA CODE AND PHONE").unwrap().get(i).unwrap());
-        let fax = remove_quotes(&chunk.column("FAX").unwrap().get(i).unwrap());
-        let sales_volume = remove_quotes(&chunk.column("SALES VOLUME").unwrap().get(i).unwrap());
-        let number_of_employees = remove_quotes(&chunk.column("NUMBER OF EMPLOYEES").unwrap().get(i).unwrap());
-        let public_private_company = remove_quotes(&chunk.column("PUBLIC PRIVATE COMPANY").unwrap().get(i).unwrap());
-        let location_type = remove_quotes(&chunk.column("LOCATION TYPE").unwrap().get(i).unwrap());
-        let firm_or_individual = remove_quotes(&chunk.column("FIRM INDIVIDUAL").unwrap().get(i).unwrap());
-        let credit_score = remove_quotes(&chunk.column("CREDIT SCORE CODE").unwrap().get(i).unwrap());
-        let stock_exchange = remove_quotes(&chunk.column("STOCK EXCHANGE").unwrap().get(i).unwrap());
-        let stock_ticker_symbol = remove_quotes(&chunk.column("STOCK TICKER SYMBOL").unwrap().get(i).unwrap());
-        let website = remove_quotes(&chunk.column("WEB ADDRESS").unwrap().get(i).unwrap());
-        let first_name = remove_quotes(&chunk.column("FIRSTNAME").unwrap().get(i).unwrap());
-        let last_name = remove_quotes(&chunk.column("LASTNAME").unwrap().get(i).unwrap());
-        let title = remove_quotes(&chunk.column("TITLE").unwrap().get(i).unwrap());
-        let industry = remove_quotes(&chunk.column("SIC NAME1").unwrap().get(i).unwrap());
-        let sic = remove_quotes(&chunk.column("SIC").unwrap().get(i).unwrap());
-        let naics = remove_quotes(&chunk.column("NAICS").unwrap().get(i).unwrap());
-        let ncci = remove_quotes(&chunk.column("NCCI").unwrap().get(i).unwrap());
+        let business_name = remove_quotes_from_anyvalue(&chunk.column("BUSINESS NAME").unwrap().get(i).unwrap());
+        let mailing_address = remove_quotes_from_anyvalue(&chunk.column("MAILING ADDRESS").unwrap().get(i).unwrap());
+        let mailing_city = remove_quotes_from_anyvalue(&chunk.column("MAILING CITY").unwrap().get(i).unwrap());
+        let mailing_state = remove_quotes_from_anyvalue(&chunk.column("MAILING STATE").unwrap().get(i).unwrap());
+        let mailing_zip = remove_quotes_from_anyvalue(&chunk.column("MAILING ZIP").unwrap().get(i).unwrap());
+        let phone = remove_quotes_from_anyvalue(&chunk.column("AREA CODE AND PHONE").unwrap().get(i).unwrap());
+        let fax = remove_quotes_from_anyvalue(&chunk.column("FAX").unwrap().get(i).unwrap());
+        let sales_volume = remove_quotes_from_anyvalue(&chunk.column("SALES VOLUME").unwrap().get(i).unwrap());
+        let number_of_employees = remove_quotes_from_anyvalue(&chunk.column("NUMBER OF EMPLOYEES").unwrap().get(i).unwrap());
+        let public_private_company = remove_quotes_from_anyvalue(&chunk.column("PUBLIC PRIVATE COMPANY").unwrap().get(i).unwrap());
+        let location_type = remove_quotes_from_anyvalue(&chunk.column("LOCATION TYPE").unwrap().get(i).unwrap());
+        let firm_or_individual = remove_quotes_from_anyvalue(&chunk.column("FIRM INDIVIDUAL").unwrap().get(i).unwrap());
+        let credit_score = remove_quotes_from_anyvalue(&chunk.column("CREDIT SCORE CODE").unwrap().get(i).unwrap());
+        let stock_exchange = remove_quotes_from_anyvalue(&chunk.column("STOCK EXCHANGE").unwrap().get(i).unwrap());
+        let stock_ticker_symbol = remove_quotes_from_anyvalue(&chunk.column("STOCK TICKER SYMBOL").unwrap().get(i).unwrap());
+        let website = remove_quotes_from_anyvalue(&chunk.column("WEB ADDRESS").unwrap().get(i).unwrap());
+        let first_name = remove_quotes_from_anyvalue(&chunk.column("FIRSTNAME").unwrap().get(i).unwrap());
+        let last_name = remove_quotes_from_anyvalue(&chunk.column("LASTNAME").unwrap().get(i).unwrap());
+        let title = remove_quotes_from_anyvalue(&chunk.column("TITLE").unwrap().get(i).unwrap());
+        let industry = remove_quotes_from_anyvalue(&chunk.column("SIC NAME1").unwrap().get(i).unwrap());
+        let sic = remove_quotes_from_anyvalue(&chunk.column("SIC").unwrap().get(i).unwrap());
+        let naics = remove_quotes_from_anyvalue(&chunk.column("NAICS").unwrap().get(i).unwrap());
+        let ncci = remove_quotes_from_anyvalue(&chunk.column("NCCI").unwrap().get(i).unwrap());
         
         println!("---- Business Info ----");
         println!("Email domain: {}", domain );
@@ -116,30 +116,30 @@ async fn send_chunk_to_business_credit_directory_db(
 
             let new_lead = us_business_credit_leads::ActiveModel {
                 id: sea_orm::ActiveValue::Set(Uuid::new_v4()),
-                business_name: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("BUSINESS NAME").unwrap().get(i).unwrap())),
-                mailing_address: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("MAILING ADDRESS").unwrap().get(i).unwrap())),
-                mailing_city: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("MAILING CITY").unwrap().get(i).unwrap())),
-                mailing_state: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("MAILING STATE").unwrap().get(i).unwrap())),
-                mailing_zip: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("MAILING ZIP").unwrap().get(i).unwrap())),
-                phone: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("AREA CODE AND PHONE").unwrap().get(i).unwrap())),
-                fax: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("FAX").unwrap().get(i).unwrap())),
-                sales_volume: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("SALES VOLUME").unwrap().get(i).unwrap())),
-                number_of_employees: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("NUMBER OF EMPLOYEES").unwrap().get(i).unwrap())),
-                public_private_company: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("PUBLIC PRIVATE COMPANY").unwrap().get(i).unwrap())),
-                location_type: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("LOCATION TYPE").unwrap().get(i).unwrap())),
-                firm_or_individual: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("FIRM INDIVIDUAL").unwrap().get(i).unwrap())),
-                credit_score: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("CREDIT SCORE CODE").unwrap().get(i).unwrap())),
-                stock_exchange: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("STOCK EXCHANGE").unwrap().get(i).unwrap())),
-                stock_ticker_symbol: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("STOCK TICKER SYMBOL").unwrap().get(i).unwrap())),
-                website: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("WEB ADDRESS").unwrap().get(i).unwrap())),
-                first_name: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("FIRSTNAME").unwrap().get(i).unwrap())),
-                last_name: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("LASTNAME").unwrap().get(i).unwrap())),
-                title: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("TITLE").unwrap().get(i).unwrap())),
-                email: sea_orm::ActiveValue::Set(remove_quotes_from_string(&email_value)),
-                industry: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("SIC NAME1").unwrap().get(i).unwrap())),
-                sic: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("SIC").unwrap().get(i).unwrap())),
-                naics: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("NAICS").unwrap().get(i).unwrap())),
-                ncci: sea_orm::ActiveValue::Set(remove_quotes(&chunk.column("NCCI").unwrap().get(i).unwrap())),
+                business_name: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("BUSINESS NAME").unwrap().get(i).unwrap())),
+                mailing_address: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("MAILING ADDRESS").unwrap().get(i).unwrap())),
+                mailing_city: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("MAILING CITY").unwrap().get(i).unwrap())),
+                mailing_state: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("MAILING STATE").unwrap().get(i).unwrap())),
+                mailing_zip: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("MAILING ZIP").unwrap().get(i).unwrap())),
+                phone: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("AREA CODE AND PHONE").unwrap().get(i).unwrap())),
+                fax: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("FAX").unwrap().get(i).unwrap())),
+                sales_volume: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("SALES VOLUME").unwrap().get(i).unwrap())),
+                number_of_employees: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("NUMBER OF EMPLOYEES").unwrap().get(i).unwrap())),
+                public_private_company: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("PUBLIC PRIVATE COMPANY").unwrap().get(i).unwrap())),
+                location_type: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("LOCATION TYPE").unwrap().get(i).unwrap())),
+                firm_or_individual: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("FIRM INDIVIDUAL").unwrap().get(i).unwrap())),
+                credit_score: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("CREDIT SCORE CODE").unwrap().get(i).unwrap())),
+                stock_exchange: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("STOCK EXCHANGE").unwrap().get(i).unwrap())),
+                stock_ticker_symbol: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("STOCK TICKER SYMBOL").unwrap().get(i).unwrap())),
+                website: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("WEB ADDRESS").unwrap().get(i).unwrap())),
+                first_name: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("FIRSTNAME").unwrap().get(i).unwrap())),
+                last_name: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("LASTNAME").unwrap().get(i).unwrap())),
+                title: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("TITLE").unwrap().get(i).unwrap())),
+                email: sea_orm::ActiveValue::Set(remove_quotes_from_str(&email_value)),
+                industry: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("SIC NAME1").unwrap().get(i).unwrap())),
+                sic: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("SIC").unwrap().get(i).unwrap())),
+                naics: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("NAICS").unwrap().get(i).unwrap())),
+                ncci: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&chunk.column("NCCI").unwrap().get(i).unwrap())),
             };
             
             new_business_credit_leads_list.push(new_lead);

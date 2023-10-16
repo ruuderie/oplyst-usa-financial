@@ -2,3 +2,5 @@
 
 pub use super::shippers::Entity as Shippers;
 pub use super::us_business_credit_analysis::Entity as UsBusinessCreditAnalysis;
+pub use super::us_business_credit_leads::Entity as UsBusinessCreditLeads;
+pub use super::us_zoom_info::Entity as UsZoomInfo;

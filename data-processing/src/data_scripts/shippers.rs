@@ -14,7 +14,7 @@ use uuid::Uuid;
 use csv::Writer;
 use std::collections::HashSet;
 use crate::utils::constants::common_email_domains;
-use crate::utils::functions::{remove_quotes, remove_quotes_from_string,remove_quotes_from_str};
+use crate::utils::functions::{remove_quotes_from_anyvalue, remove_quotes_from_str};
 
 pub async fn load_shipper_insights() -> Result<(), Box<dyn std::error::Error>> {
     // Read the data from the file at runtime
@@ -91,21 +91,21 @@ async fn send_chunk_to_shippers_db(
 
             let new_shipper = shippers::ActiveModel {
                 id: sea_orm::ActiveValue::Set(Uuid::new_v4()),
-                shipper_type: sea_orm::ActiveValue::Set(remove_quotes(&shipper_type.get(i).unwrap())),
-                company_name: sea_orm::ActiveValue::Set(remove_quotes(&company_name.get(i).unwrap())),
-                street_address: sea_orm::ActiveValue::Set(remove_quotes(&street_address.get(i).unwrap())),
-                city: sea_orm::ActiveValue::Set(remove_quotes(&city.get(i).unwrap())),
-                state: sea_orm::ActiveValue::Set(remove_quotes(&state.get(i).unwrap())),
-                zip_code: sea_orm::ActiveValue::Set(remove_quotes(&zip_code.get(i).unwrap())),
-                phone: sea_orm::ActiveValue::Set(remove_quotes(&phone.get(i).unwrap())),
-                fax: sea_orm::ActiveValue::Set(remove_quotes(&fax.get(i).unwrap())),
-                sales: sea_orm::ActiveValue::Set(remove_quotes(&sales.get(i).unwrap())),
-                industry: sea_orm::ActiveValue::Set(remove_quotes(&industry.get(i).unwrap())),
-                website: sea_orm::ActiveValue::Set(remove_quotes(&website.get(i).unwrap())),
-                first_name: sea_orm::ActiveValue::Set(remove_quotes(&first_name.get(i).unwrap())),
-                last_name: sea_orm::ActiveValue::Set(remove_quotes(&last_name.get(i).unwrap())),
-                title: sea_orm::ActiveValue::Set(remove_quotes(&title.get(i).unwrap())),
-                email: sea_orm::ActiveValue::Set(remove_quotes_from_string(&email_value)),
+                shipper_type: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&shipper_type.get(i).unwrap())),
+                company_name: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&company_name.get(i).unwrap())),
+                street_address: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&street_address.get(i).unwrap())),
+                city: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&city.get(i).unwrap())),
+                state: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&state.get(i).unwrap())),
+                zip_code: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&zip_code.get(i).unwrap())),
+                phone: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&phone.get(i).unwrap())),
+                fax: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&fax.get(i).unwrap())),
+                sales: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&sales.get(i).unwrap())),
+                industry: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&industry.get(i).unwrap())),
+                website: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&website.get(i).unwrap())),
+                first_name: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&first_name.get(i).unwrap())),
+                last_name: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&last_name.get(i).unwrap())),
+                title: sea_orm::ActiveValue::Set(remove_quotes_from_anyvalue(&title.get(i).unwrap())),
+                email: sea_orm::ActiveValue::Set(remove_quotes_from_str(&email_value)),
             };
             
             new_shippers_list.push(new_shipper);
