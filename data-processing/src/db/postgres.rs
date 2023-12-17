@@ -20,7 +20,7 @@ pub async fn establish_connection() -> Result<DatabaseConnection, sea_orm::DbErr
 
     // Configure the SeaORM connection options
     let mut opt = ConnectOptions::new(&db_url);
-    opt.max_connections(150)
+    opt.max_connections(16)
        .min_connections(2)
        .connect_timeout(Duration::from_secs(8))
        .acquire_timeout(Duration::from_secs(8))
